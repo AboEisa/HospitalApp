@@ -1,0 +1,54 @@
+<resources>
+    <string name="app_name">Hospital App</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="to_continue_">To Continue , Login Now</string>
+    <string name="forget_password">Forget Password?</string>
+    <string name="welcome_back">welcome back !</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="specialist_doctor">Specialist - Doctor</string>
+    <string name="salma_ahmed">Salma Ahmed</string>
+    <string name="employee">employee</string>
+    <string name="search_for_employee">Search for Employee</string>
+    <string name="new_user">New User</string>
+    <string name="first_name">First Name</string>
+    <string name="last_name">Last Name</string>
+    <string name="date_of_birth">Date of birth</string>
+    <string name="phone_numberr">Phone Number</string>
+    <string name="e_mail">E-mail</string>
+    <string name="address">Address</string>
+
+    <string name="gender">Gender</string>
+    <string name="type">Type</string>
+    <string name="status">Status</string>
+
+
+
+    <string-array name="gender_options">
+        <item>Gender</item>
+        <item>Male</item>
+        <item>Female</item>
+    </string-array>
+
+
+    <string-array name="specialist_options">
+        <item>Specialist</item>
+        <item>doctor</item>
+        <item>nurse</item>
+        <item>receptionist</item>
+        <item>manger</item>
+        <item>laboratory Physician</item>
+        <item>hr</item>
+    </string-array>
+
+
+    <string-array name="status_options">
+        <item>Status</item>
+        <item>Single</item>
+        <item>Married</item>
+    </string-array>
+
+
+</resources>

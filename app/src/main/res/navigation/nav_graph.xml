@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.example.hospitalapp.ui.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash">
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:enterAnim="@anim/animation"
+            app:exitAnim="@anim/animation2"
+            app:popEnterAnim="@anim/animation3"
+            app:popExitAnim="@anim/animation4"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.hospitalapp.ui.login.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_hrFragment"
+            app:destination="@id/hrFragment"
+            app:enterAnim="@anim/animation"
+            app:exitAnim="@anim/animation2"
+            app:popEnterAnim="@anim/animation3"
+            app:popExitAnim="@anim/animation4" />
+    </fragment>
+    <fragment
+        android:id="@+id/hrFragment"
+        android:name="com.example.hospitalapp.ui.hr.HrFragment"
+        android:label="fragment_hr"
+        tools:layout="@layout/fragment_hr">
+
+        <argument
+            android:name="fullName"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="specialist"
+            app:argType="string" />
+        <argument
+            android:name="gender"
+            app:argType="string" />
+        <argument
+            android:name="birthday"
+            app:argType="string" />
+        <argument
+            android:name="address"
+            app:argType="string" />
+        <argument
+            android:name="status"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_hrFragment_to_employeeFragment"
+            app:destination="@id/employeeFragment"
+            app:enterAnim="@anim/animation"
+            app:exitAnim="@anim/animation2"
+            app:popEnterAnim="@anim/animation3"
+            app:popExitAnim="@anim/animation4" />
+        <action
+            android:id="@+id/action_hrFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/animation"
+            app:exitAnim="@anim/animation2"
+            app:popEnterAnim="@anim/animation3"
+            app:popExitAnim="@anim/animation4" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/employeeFragment"
+        android:name="com.example.hospitalapp.ui.hr.EmployeeFragment"
+        android:label="fragment_employee"
+        tools:layout="@layout/fragment_employee">
+        <argument
+            android:name="fullName"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="specialist"
+            app:argType="string" />
+        <argument
+            android:name="gender"
+            app:argType="string" />
+        <argument
+            android:name="birthday"
+            app:argType="string" />
+        <argument
+            android:name="address"
+            app:argType="string" />
+        <argument
+            android:name="status"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_employeeFragment_to_newUserFragment"
+            app:destination="@id/newUserFragment"
+            app:enterAnim="@anim/animation"
+            app:exitAnim="@anim/animation2"
+            app:popEnterAnim="@anim/animation3"
+            app:popExitAnim="@anim/animation4" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/newUserFragment"
+        android:name="com.example.hospitalapp.ui.hr.NewUserFragment"
+        android:label="fragment_new_user"
+        tools:layout="@layout/fragment_new_user">
+        <action
+            android:id="@+id/action_newUserFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/animation"
+            app:exitAnim="@anim/animation2"
+            app:popEnterAnim="@anim/animation3"
+            app:popExitAnim="@anim/animation4" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.example.hospitalapp.ui.profile.ProfileFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile">
+
+        <!-- User Information Arguments -->
+        <argument
+            android:name="fullName"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="specialist"
+            app:argType="string" />
+        <argument
+            android:name="gender"
+            app:argType="string" />
+        <argument
+            android:name="birthday"
+            app:argType="string" />
+        <argument
+            android:name="address"
+            app:argType="string" />
+        <argument
+            android:name="status"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+
+    </fragment>
+
+
+</navigation>

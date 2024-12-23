@@ -19,14 +19,20 @@ class EmployeeViewModel @Inject constructor(private val apiServices: ApiServices
     private val _employeeLiveData = MutableLiveData<ModelAllUser?>()
     val employeeLiveData get() = _employeeLiveData
 
-    suspend fun getEmployee( type : String, name : String){
+     fun getEmployee( type : String, name : String){
         viewModelScope.launch(IO) {
             val response = apiServices.getEmployee(type, name)
-            if (response.status == 1 ){
-                _employeeLiveData.postValue(response)
-            }else{
+            try {
+                if (response.status == 1 ){
+                    _employeeLiveData.postValue(response)
+                }else{
+                    _employeeLiveData.postValue(null)
+                }
+            }catch (e : Exception){
                 _employeeLiveData.postValue(null)
-            }
+
+        }
+
         }
     }
 

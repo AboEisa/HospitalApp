@@ -74,7 +74,6 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         android:layout_marginHorizontal="@dimen/_8sdp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/recycler_employee"
         app:layout_constraintTop_toBottomOf="@id/search" />
 
 
@@ -87,7 +86,7 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_5sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toTopOf="@+id/add_employee"
+
         app:layout_constraintTop_toBottomOf="@+id/recyclerTypes"
         app:reverseLayout="false"
         tools:listitem="@layout/item_employee" />

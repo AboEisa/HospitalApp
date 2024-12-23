@@ -146,7 +146,7 @@ class LoginFragment : Fragment() {
     ) {
         val fullName = "$firstName $lastName"
         val action = when (type) {
-            HR -> LoginFragmentDirections.actionLoginFragmentToHrFragment(
+            DOCTOR -> LoginFragmentDirections.actionLoginFragmentToHrFragment(
                 fullName = fullName,
                 type = type,
                 specialist = specialist,

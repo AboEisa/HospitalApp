@@ -33,9 +33,6 @@ class EmployeeAdapter : RecyclerView.Adapter<EmployeeAdapter.Holder>() {
 
     inner class Holder(val binding: ItemEmployeeBinding) : RecyclerView.ViewHolder(binding.root) {
 
-
-
-
         val textName : TextView = binding.textName
         val textType : TextView = binding.textType
 

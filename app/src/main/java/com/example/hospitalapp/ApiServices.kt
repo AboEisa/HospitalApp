@@ -8,6 +8,7 @@ import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import retrofit2.http.Query
 
@@ -20,7 +21,7 @@ interface ApiServices {
     suspend fun login(
         @Field("email") email: String,
         @Field("password") password: String,
-        @Field("device_token") deviceToken: String
+        @Field("Device Token") type: String
     ): UserModel
 
 
@@ -46,7 +47,13 @@ interface ApiServices {
     suspend fun getEmployee(
         @Query("type") type: String,
         @Query("name") name: String
+
+
     ): ModelAllUser
+
+
+
+
 
 
 

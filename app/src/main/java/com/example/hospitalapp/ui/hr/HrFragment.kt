@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.hospitalapp.R
 import com.example.hospitalapp.databinding.FragmentHrBinding
@@ -24,6 +25,7 @@ class HrFragment : Fragment() {
     private lateinit var status: String
     private lateinit var email: String
     private lateinit var phone: String
+    val hrvViewModel: HrViewModel by viewModels()
 
 
     override fun onCreateView(
@@ -52,7 +54,6 @@ class HrFragment : Fragment() {
             email = HrFragmentArgs.fromBundle(it).email
             phone = HrFragmentArgs.fromBundle(it).phone
         }
-        // this data in ui
         binding.userType.text = type
         binding.headName.text = fullName
         binding.userType.text = specialist
@@ -84,6 +85,8 @@ class HrFragment : Fragment() {
                 email = email,
                 phone = phone
             ))
+
+
         }
     }
     override fun onDestroyView() {

@@ -65,7 +65,6 @@ class ProfileFragment : Fragment() {
             email = ProfileFragmentArgs.fromBundle(it).email
             phone = ProfileFragmentArgs.fromBundle(it).phone
         }
-        // this data in ui
         binding.textName.text = fullName
         binding.firstName.text = specialist
         binding.gender.text = gender

@@ -9,8 +9,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
+import com.example.hospitalapp.R
 import com.example.hospitalapp.databinding.FragmentLoginBinding
 import com.example.hospitalapp.models.Data
+import com.example.hospitalapp.utils.Constants
 import com.example.hospitalapp.utils.Constants.Companion.ANALYSIS
 import com.example.hospitalapp.utils.Constants.Companion.DOCTOR
 import com.example.hospitalapp.utils.Constants.Companion.HR
@@ -44,64 +46,26 @@ class LoginFragment : Fragment() {
     private fun onClicks() {
         binding.btnLogin.setOnClickListener {
             validation()
-            val email = binding.textEmail.text.toString()
-            val password = binding.textPassword.text.toString()
-            loginViewModel.login(email, password, deviceToken = "")
         }
     }
 
 
 
-    private fun validation(): Boolean {
+    private fun validation() {
         val email = binding.textEmail.text.toString().trim()
         val password = binding.textPassword.text.toString().trim()
-        val errorMessages = mutableListOf<String>() // Collect error messages
-        var isValid = true
 
-        // Validate email
-        when {
-            email.isEmpty() -> {
-                binding.textEmail.error = "Required"
-                errorMessages.add("Email is required.")
-                isValid = false
-            }
-            !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
-                binding.textEmail.error = "Invalid Email"
-                errorMessages.add("Invalid email format.")
-                isValid = false
-            }
-            else -> {
-                binding.textEmail.error = null
-            }
+        // Input validation
+        if (email.isEmpty()) {
+            binding.textEmail.error = getString(R.string.e_mail)
+        } else if (password.isEmpty()) {
+            binding.textPassword.error = getString(R.string.password)
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            binding.textEmail.error = getString(R.string.e_mail)
+        } else {
+            // Perform login without Firebase token (direct login request to backend)
+            loginViewModel.login(email, password,Constants.BEARER_TOKEN)
         }
-
-        // Validate password
-        when {
-            password.isEmpty() -> {
-                binding.textPassword.error = "Required"
-                errorMessages.add("Password is required.")
-                isValid = false
-            }
-            password.length < 6 -> {
-                binding.textPassword.error = "Password must be at least 6 characters"
-                errorMessages.add("Password must be at least 6 characters long.")
-                isValid = false
-            }
-            else -> {
-                binding.textPassword.error = null
-            }
-        }
-
-        // Display error messages if any
-        if (errorMessages.isNotEmpty()) {
-            Toast.makeText(
-                requireContext(),
-                errorMessages.joinToString("\n"), // Join all error messages with a newline
-                Toast.LENGTH_LONG
-            ).show()
-        }
-
-        return isValid
     }
 
 
@@ -146,11 +110,11 @@ class LoginFragment : Fragment() {
     ) {
         val fullName = "$firstName $lastName"
         val action = when (type) {
-            DOCTOR -> LoginFragmentDirections.actionLoginFragmentToHrFragment(
+            HR -> LoginFragmentDirections.actionLoginFragmentToHrFragment(
                 fullName = fullName,
                 type = type,
                 specialist = specialist,
-                gender = gender,  // Add a comma here
+                gender = gender,
                 birthday = birthday,
                 address = address,
                 status = status,

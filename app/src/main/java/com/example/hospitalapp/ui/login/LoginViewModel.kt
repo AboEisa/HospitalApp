@@ -1,12 +1,9 @@
 package com.example.hospitalapp.ui.login
 
-import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hospitalapp.ApiServices
-import com.example.hospitalapp.models.Data
 import com.example.hospitalapp.models.UserModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -20,10 +17,10 @@ class LoginViewModel @Inject constructor(private val apiServices: ApiServices) :
     private val _loginLiveData = MutableLiveData<UserModel?>()
     val loginLiveData  get() = _loginLiveData
 
-    fun login(email: String, password: String , deviceToken: String) {
+    fun login(email: String, password: String, deviceToken: String ) {
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                val response = apiServices.login(email, password,deviceToken)
+                val response = apiServices.login(email, password, deviceToken)
               if (response.status == 1){
                   _loginLiveData.postValue(response)
               }

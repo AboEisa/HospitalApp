@@ -2,6 +2,7 @@ package com.example.hospitalapp.ui.hr
 
 import EmployeeAdapter
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -12,7 +13,6 @@ import com.example.hospitalapp.R
 import com.example.hospitalapp.adapters.TypesAdapter
 
 import com.example.hospitalapp.databinding.FragmentEmployeeBinding
-import com.example.hospitalapp.ui.profile.ProfileFragmentArgs
 import com.example.hospitalapp.utils.Constants.Companion.ANALYSIS
 import com.example.hospitalapp.utils.Constants.Companion.DOCTOR
 import com.example.hospitalapp.utils.Constants.Companion.HR
@@ -28,7 +28,7 @@ class EmployeeFragment : Fragment() {
 
     private var _binding: FragmentEmployeeBinding? = null
     private val binding get() = _binding!!
-    private val viewModel: EmployeeViewModel by viewModels()
+    private val hrViewModel: HrViewModel by viewModels()
     private var type = "All"
     private lateinit var fullName: String
     private lateinit var specialist: String
@@ -38,7 +38,7 @@ class EmployeeFragment : Fragment() {
     private lateinit var status: String
     private lateinit var email: String
     private lateinit var phone: String
-    private val adapterEmployee : EmployeeAdapter by lazy { EmployeeAdapter() }
+    private val adapterEmployee : EmployeeAdapter by lazy { EmployeeAdapter( ) }
     private val adapterTypes : TypesAdapter by lazy { TypesAdapter() }
     private val typesList = ArrayList<String>()
 
@@ -47,9 +47,8 @@ class EmployeeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentEmployeeBinding.bind(view)
         displayUserData()
+        observers()
         onClicks()
-        observe()
-
     }
 
 
@@ -99,28 +98,35 @@ class EmployeeFragment : Fragment() {
             adapterTypes.notifyDataSetChanged()
 
 
-            textSearch.setOnClickListener {
-                viewModel.getEmployee(type,textSearch.text.toString())
-            }
+
         }
 
 
     }
-   private fun observe() {
+    private fun observers() {
+        hrViewModel.getEmployee(fullName, type)
 
-       viewModel.getEmployee(
-           type = type,
-           name = fullName
-       )
-       viewModel.employeeLiveData.observe(viewLifecycleOwner) {
+        hrViewModel.employeeLiveData.observe(viewLifecycleOwner) { response ->
+            response?.let {
+                val data = it.data
+                if (data != null && data.isNotEmpty()) {
+                    // Data is available
+                    adapterEmployee.list = data as ArrayList<DataAll>
+                    binding.recyclerEmployee.adapter = adapterEmployee
+                    adapterEmployee.notifyDataSetChanged()
+                    binding.recyclerEmployee.visibility = View.VISIBLE
+                } else {
+                    // Data is empty
+                    binding.recyclerEmployee.visibility = View.GONE
+                }
+            }
+        }
 
-             val data = it?.data as ModelAllUser
-               adapterEmployee.list = data.data as ArrayList<DataAll>
-               binding.recyclerEmployee.adapter = adapterEmployee
-               adapterEmployee.notifyDataSetChanged()
+    }
 
-       }
-   }
+
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

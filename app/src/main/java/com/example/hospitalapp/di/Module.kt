@@ -2,6 +2,8 @@ package com.vitatrack.hospitalsystem.di
 
 
 import com.example.hospitalapp.ApiServices
+import com.example.hospitalapp.MySharedPreferences
+import com.example.hospitalapp.utils.Constants
 import com.example.hospitalapp.utils.Constants.Companion.BASE_URL
 import com.example.hospitalapp.utils.Constants.Companion.BEARER_TOKEN
 import dagger.Module
@@ -37,10 +39,11 @@ object Module {
                     val url = originalUrl.newBuilder().build()
                     val requestBuilder = originalRequest.newBuilder().url(url)
                         .addHeader("Accept", "application/json")
-                        .addHeader("Authorization", "Bearer $BEARER_TOKEN")
+                        .addHeader("Authorization", "Bearer $BEARER_TOKEN"
+                        )
                     val request = requestBuilder.build()
                     val response = chain.proceed(request)
-                    response.code//status code
+                    response.code
                     return response
                 }
             })
@@ -53,7 +56,7 @@ object Module {
     fun  getRetrofit(okHttp:OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttp)
-            .baseUrl(BASE_URL)
+            .baseUrl("https://hospital.elhossiny.net/api/v1/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

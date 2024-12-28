@@ -14,7 +14,7 @@ import com.vitatrack.hospitalsystem.models.ModelAllUser
 class TypesAdapter: RecyclerView.Adapter<TypesAdapter.Holder>() {
 
     var list : ArrayList<String> ?= null
-    var onUserClick : OnUserClick ?= null
+    private var onUserClick : OnUserClick ?= null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
        val binding = ItemTypesBinding.inflate(LayoutInflater.from(parent.context), parent, false)

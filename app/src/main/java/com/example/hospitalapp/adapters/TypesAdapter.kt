@@ -8,41 +8,28 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.hospitalapp.R
 import com.example.hospitalapp.databinding.ItemTypesBinding
 import com.example.hospitalapp.models.Data
-import com.vitatrack.hospitalsystem.models.DataAll
-import com.vitatrack.hospitalsystem.models.ModelAllUser
 
-class TypesAdapter: RecyclerView.Adapter<TypesAdapter.Holder>() {
+class TypesAdapter : RecyclerView.Adapter<TypesAdapter.Holder>() {
 
-    var list : ArrayList<String> ?= null
-    private var onUserClick : OnUserClick ?= null
+    var list: ArrayList<String>? = null
+    var onTypeClick: ((String) -> Unit)? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
-       val binding = ItemTypesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = ItemTypesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return Holder(binding)
     }
-    override fun onBindViewHolder(holder: Holder, position: Int) {
 
-        holder.textType.text = list?.get(position)
+    override fun onBindViewHolder(holder: Holder, position: Int) {
+        val type = list?.get(position)
+        holder.textType.text = type
         holder.itemView.setOnClickListener {
-            onUserClick?.onClick(position)
+            type?.let { onTypeClick?.invoke(it) }
         }
     }
 
-    override fun getItemCount(): Int {
-      return  list?.size ?: 0
-    }
+    override fun getItemCount(): Int = list?.size ?: 0
 
     inner class Holder(private val binding: ItemTypesBinding) : RecyclerView.ViewHolder(binding.root) {
-
-     val textType = binding.textType
-
+        val textType: TextView = binding.textType
     }
-    interface OnUserClick {
-        fun onClick (id : Int)
-    }
-
-
-
-
-
 }

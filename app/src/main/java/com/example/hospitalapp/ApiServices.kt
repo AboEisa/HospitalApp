@@ -1,9 +1,10 @@
 package com.example.hospitalapp
 
+
 import com.example.hospitalapp.models.Data
 import com.example.hospitalapp.models.UserModel
-import com.vitatrack.hospitalsystem.models.DataAll
 import com.vitatrack.hospitalsystem.models.ModelAllUser
+
 import retrofit2.Response
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -41,7 +42,6 @@ interface ApiServices {
        @Field("mobile") mobile: String,
        @Field("type") type: String
    ): UserModel
-
 
     @GET("doctors")
     suspend fun getEmployee(

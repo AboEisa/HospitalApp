@@ -2,7 +2,8 @@ package com.example.hospitalapp.ui.hr
 
 import EmployeeAdapter
 import android.os.Bundle
-import android.util.Log
+import android.text.Editable
+import android.text.TextWatcher
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -11,7 +12,6 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.hospitalapp.R
 import com.example.hospitalapp.adapters.TypesAdapter
-
 import com.example.hospitalapp.databinding.FragmentEmployeeBinding
 import com.example.hospitalapp.utils.Constants.Companion.ANALYSIS
 import com.example.hospitalapp.utils.Constants.Companion.DOCTOR
@@ -19,9 +19,11 @@ import com.example.hospitalapp.utils.Constants.Companion.HR
 import com.example.hospitalapp.utils.Constants.Companion.MANAGER
 import com.example.hospitalapp.utils.Constants.Companion.NURSE
 import com.example.hospitalapp.utils.Constants.Companion.RECEPTIONIST
-import com.vitatrack.hospitalsystem.models.DataAll
-import com.vitatrack.hospitalsystem.models.ModelAllUser
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class EmployeeFragment : Fragment() {
@@ -41,6 +43,8 @@ class EmployeeFragment : Fragment() {
     private lateinit var status: String
     private lateinit var email: String
     private lateinit var phone: String
+    private var id: Int = 0
+    private var searchJob: Job? = null
 
 
 
@@ -60,22 +64,41 @@ class EmployeeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_employee, container, false)
     }
 
-   private fun onClicks(){
+    private fun onClicks() {
         binding.apply {
-            binding.btnBack.setOnClickListener{
-               findNavController().popBackStack()
+            btnBack.setOnClickListener {
+                findNavController().popBackStack()
             }
+            addEmployee.setOnClickListener {
+                findNavController().navigate(EmployeeFragmentDirections.actionEmployeeFragmentToNewUserFragment())
+            }
+            binding.textSearch.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                    searchJob?.cancel()
+                    searchJob = MainScope().launch {
+                        delay(300)
+                        fullName = s.toString().trim()
+                        fetchEmployees(type, fullName)
+                    }
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+
+                }
+            })
+        }
         }
 
-    }
 
 
     private fun setupTypeAdapter() {
         adapterTypes.list = typesList
         binding.recyclerTypes.adapter = adapterTypes
         adapterTypes.notifyDataSetChanged()
-
-
         adapterTypes.onTypeClick = { type ->
             this.type = type
             fetchEmployees(type, fullName)
@@ -86,20 +109,33 @@ class EmployeeFragment : Fragment() {
         hrViewModel.getEmployee(type, fullName)
     }
 
+
     private fun observers() {
         hrViewModel.employeeLiveData.observe(viewLifecycleOwner) { response ->
             response?.let {
                 val data = it.data
                 if (!data.isNullOrEmpty()) {
+                    // Set the list to the adapter
                     adapterEmployee.list = ArrayList(data)
+                    binding.recyclerEmployee.visibility = View.VISIBLE
                     binding.recyclerEmployee.adapter = adapterEmployee
                     adapterEmployee.notifyDataSetChanged()
+                    binding.noResultsPlaceholder.visibility = View.GONE
+
+
+
                 } else {
+                    // Show "No Results Found" placeholder if the list is empty
+                    adapterEmployee.list = arrayListOf()
                     binding.recyclerEmployee.visibility = View.GONE
+                    binding.noResultsPlaceholder.visibility = View.VISIBLE
                 }
             }
         }
     }
+
+
+
 
     override fun onDestroyView() {
         super.onDestroyView()

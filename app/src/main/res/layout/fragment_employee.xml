@@ -86,9 +86,9 @@
         android:layout_marginTop="@dimen/_5sdp"
         android:layout_marginBottom="@dimen/_5sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-
         app:layout_constraintTop_toBottomOf="@+id/recyclerTypes"
         app:reverseLayout="false"
+        app:layout_constraintBottom_toBottomOf="@+id/add_employee"
         tools:listitem="@layout/item_employee" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -101,5 +101,21 @@
         android:backgroundTint="@color/main_color"
         android:layout_margin="@dimen/_20sdp"
         />
+
+
+    <TextView
+        android:id="@+id/noResultsPlaceholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="No results found"
+        android:textColor="#828282"
+        android:textSize="16sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

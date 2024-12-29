@@ -167,11 +167,11 @@
 
     <View
         android:id="@+id/textUnderLine"
-        android:layout_width="@dimen/_89sdp"
-        android:layout_height="@dimen/_1sdp"
-        android:background="@color/black"
+        android:layout_width="@dimen/_88sdp"
+        android:layout_height="1.5dp"
+        android:background="#828282"
         app:layout_constraintBottom_toBottomOf="@+id/textView2"
-        android:layout_marginEnd="@dimen/_20sdp"
+        android:layout_marginEnd="@dimen/_21sdp"
         app:layout_constraintEnd_toEndOf="parent" />
 
     <View

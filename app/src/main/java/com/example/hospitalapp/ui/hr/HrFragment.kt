@@ -83,7 +83,8 @@ class HrFragment : Fragment() {
                 address = address,
                 status = status,
                 email = email,
-                phone = phone
+                phone = phone,
+                id = id.toString()
             ))
 
 

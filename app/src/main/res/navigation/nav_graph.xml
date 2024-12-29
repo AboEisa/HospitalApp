@@ -115,6 +115,9 @@
         <argument
             android:name="phone"
             app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="string" />
         <action
             android:id="@+id/action_employeeFragment_to_newUserFragment"
             app:destination="@id/newUserFragment"

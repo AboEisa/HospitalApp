@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.example.hospitalapp.R
 import com.example.hospitalapp.adapters.TypesAdapter
@@ -20,6 +21,7 @@ import com.example.hospitalapp.utils.Constants.Companion.MANAGER
 import com.example.hospitalapp.utils.Constants.Companion.NURSE
 import com.example.hospitalapp.utils.Constants.Companion.RECEPTIONIST
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
@@ -47,6 +49,12 @@ class EmployeeFragment : Fragment() {
     private var searchJob: Job? = null
 
 
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        return inflater.inflate(R.layout.fragment_employee, container, false)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,13 +63,6 @@ class EmployeeFragment : Fragment() {
         observers()
         fetchEmployees(type, fullName)
         onClicks()
-    }
-
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        return inflater.inflate(R.layout.fragment_employee, container, false)
     }
 
     private fun onClicks() {
@@ -79,8 +80,8 @@ class EmployeeFragment : Fragment() {
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     searchJob?.cancel()
-                    searchJob = MainScope().launch {
-                        delay(300)
+                    searchJob = lifecycleScope.launch {
+                        delay(200)
                         fullName = s.toString().trim()
                         fetchEmployees(type, fullName)
                     }
@@ -106,7 +107,9 @@ class EmployeeFragment : Fragment() {
     }
 
     private fun fetchEmployees(type: String, fullName: String) {
-        hrViewModel.getEmployee(type, fullName)
+       lifecycleScope.launch(Dispatchers.IO) {
+           hrViewModel.getEmployee(type, fullName)
+       }
     }
 
 

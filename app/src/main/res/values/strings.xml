@@ -24,6 +24,11 @@
     <string name="type">Type</string>
     <string name="status">Status</string>
 
+    <string name="invalid_email_password">The email or password is incorrect</string>
+
+    <string name="api_error">Failed to connect to the server. Please try again.</string>
+
+
 
 
     <string-array name="gender_options">

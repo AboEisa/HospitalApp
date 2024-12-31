@@ -8,7 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import com.example.hospitalapp.ApiServices
 import com.example.hospitalapp.R
 import com.example.hospitalapp.databinding.FragmentLoginBinding
 import com.example.hospitalapp.models.Data
@@ -20,14 +22,20 @@ import com.example.hospitalapp.utils.Constants.Companion.MANAGER
 import com.example.hospitalapp.utils.Constants.Companion.NURSE
 import com.example.hospitalapp.utils.Constants.Companion.RECEPTIONIST
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class LoginFragment : Fragment() {
 
     private var _binding: FragmentLoginBinding? = null
     private val binding get() = _binding!!
+    @Inject
+    lateinit var apiServices: ApiServices
 
     private val loginViewModel: LoginViewModel by viewModels()
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -49,33 +57,54 @@ class LoginFragment : Fragment() {
         }
     }
 
-
-
     private fun validation() {
         val email = binding.textEmail.text.toString().trim()
         val password = binding.textPassword.text.toString().trim()
 
-        // Input validation
-        if (email.isEmpty()) {
-            binding.textEmail.error = getString(R.string.e_mail)
-        } else if (password.isEmpty()) {
-            binding.textPassword.error = getString(R.string.password)
-        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
-            binding.textEmail.error = getString(R.string.e_mail)
-        } else {
-            // Perform login without Firebase token (direct login request to backend)
-            loginViewModel.login(email, password,Constants.BEARER_TOKEN)
+        when {
+            email.isEmpty() -> {
+                binding.textEmail.error = getString(R.string.e_mail)
+            }
+            password.isEmpty() -> {
+                binding.textPassword.error = getString(R.string.password)
+            }
+            !Patterns.EMAIL_ADDRESS.matcher(email).matches() -> {
+                binding.textEmail.error = getString(R.string.e_mail)
+            }
+            else -> {
+                lifecycleScope.launch {
+                    try {
+                        val response = apiServices.login(email, password, Constants.BEARER_TOKEN)
+                        if (response.status == 1) {
+                            fetchDataOfUser(email, password)
+                        } else {
+                            when (response.message) {
+                                "Unauthorized" -> {
+                                    binding.textEmail.error = getString(R.string.invalid_email_password)
+                                }
+                            }
+                        }
+                    } catch (e: Exception) {
+                        Toast.makeText(requireContext(), getString(R.string.api_error), Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
         }
     }
 
 
+    private fun fetchDataOfUser(email: String, password: String){
+        lifecycleScope.launch(Dispatchers.IO) {
+            loginViewModel.login(email, password,Constants.BEARER_TOKEN)
+        }
+    }
 
 
     private fun observeViewModel() {
         loginViewModel.loginLiveData.observe(viewLifecycleOwner) { data ->
             if (data != null && data.status == 1) {
                 val responseData = data.data
-                responseData?.let {
+                responseData.let {
                     navigateUserToHome(
                         it.type
                         , it.first_name

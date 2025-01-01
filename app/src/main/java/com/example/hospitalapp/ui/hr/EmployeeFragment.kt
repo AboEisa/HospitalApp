@@ -124,11 +124,7 @@ class EmployeeFragment : Fragment() {
                     binding.recyclerEmployee.adapter = adapterEmployee
                     adapterEmployee.notifyDataSetChanged()
                     binding.noResultsPlaceholder.visibility = View.GONE
-
-
-
                 } else {
-                    // Show "No Results Found" placeholder if the list is empty
                     adapterEmployee.list = arrayListOf()
                     binding.recyclerEmployee.visibility = View.GONE
                     binding.noResultsPlaceholder.visibility = View.VISIBLE

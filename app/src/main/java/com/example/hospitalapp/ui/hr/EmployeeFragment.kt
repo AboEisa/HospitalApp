@@ -60,7 +60,7 @@ class EmployeeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentEmployeeBinding.bind(view)
         setupTypeAdapter()
-        observers()
+        observer()
         fetchEmployees(type, fullName)
         onClicks()
     }
@@ -113,7 +113,7 @@ class EmployeeFragment : Fragment() {
     }
 
 
-    private fun observers() {
+    private fun observer() {
         hrViewModel.employeeLiveData.observe(viewLifecycleOwner) { response ->
             response?.let {
                 val data = it.data

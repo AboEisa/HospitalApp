@@ -48,7 +48,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         onClicks()
-        observeViewModel()
+        observer()
     }
 
     private fun onClicks() {
@@ -99,8 +99,7 @@ class LoginFragment : Fragment() {
         }
     }
 
-
-    private fun observeViewModel() {
+    private fun observer() {
         loginViewModel.loginLiveData.observe(viewLifecycleOwner) { data ->
             if (data != null && data.status == 1) {
                 val responseData = data.data
@@ -139,7 +138,7 @@ class LoginFragment : Fragment() {
     ) {
         val fullName = "$firstName $lastName"
         val action = when (type) {
-            DOCTOR -> LoginFragmentDirections.actionLoginFragmentToHrFragment(
+            HR -> LoginFragmentDirections.actionLoginFragmentToHrFragment(
                 fullName = fullName,
                 type = type,
                 specialist = specialist,
@@ -154,7 +153,7 @@ class LoginFragment : Fragment() {
 //               fullName = fullName,
 //                type = type,
 //                specialist = specialist,
-//                gender = gender,  // Add a comma here
+//                gender = gender,
 //                birthday = birthday,
 //                address = address,
 //                status = status,
@@ -176,7 +175,7 @@ class LoginFragment : Fragment() {
 //                fullName = fullName,
 //                type = type,
 //                specialist = specialist,
-//                gender = gender,  // Add a comma here
+//                gender = gender,
 //                birthday = birthday,
 //                address = address,
 //                status = status,
@@ -187,7 +186,7 @@ class LoginFragment : Fragment() {
 //                fullName = fullName,
 //                type = type,
 //                specialist = specialist,
-//                gender = gender,  // Add a comma here
+//                gender = gender,
 //                birthday = birthday,
 //                address = address,
 //                status = status,
@@ -198,7 +197,7 @@ class LoginFragment : Fragment() {
 //                fullName = fullName,
 //                type = type,
 //                specialist = specialist,
-//                gender = gender,  // Add a comma here
+//                gender = gender,
 //                birthday = birthday,
 //                address = address,
 //                status = status,
@@ -211,8 +210,6 @@ class LoginFragment : Fragment() {
                 return
             }
         }
-
-        // Navigate to the target fragment
         findNavController().navigate(action)
     }
 

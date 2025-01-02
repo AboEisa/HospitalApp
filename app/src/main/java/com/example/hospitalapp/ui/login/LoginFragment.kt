@@ -80,7 +80,7 @@ class LoginFragment : Fragment() {
                         } else {
                             when (response.message) {
                                 "Unauthorized" -> {
-                                    binding.textEmail.error = getString(R.string.invalid_email_password)
+                                    Toast.makeText(requireContext(), getString(R.string.invalid_email_password), Toast.LENGTH_SHORT).show()
                                 }
                             }
                         }

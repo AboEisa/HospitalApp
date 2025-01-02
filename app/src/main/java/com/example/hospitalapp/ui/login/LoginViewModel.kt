@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hospitalapp.ApiServices
+import com.example.hospitalapp.SingleLiveEvent
 import com.example.hospitalapp.models.UserModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -14,7 +15,7 @@ import kotlinx.coroutines.Dispatchers
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val apiServices: ApiServices) : ViewModel() {
 
-    private val _loginLiveData = MutableLiveData<UserModel?>()
+    private val _loginLiveData = SingleLiveEvent<UserModel?>()
     val loginLiveData  get() = _loginLiveData
 
     fun login(email: String, password: String, deviceToken: String ) {

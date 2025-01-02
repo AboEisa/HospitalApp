@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hospitalapp.ApiServices
+import com.example.hospitalapp.SingleLiveEvent
 import com.example.hospitalapp.utils.Constants
 import com.vitatrack.hospitalsystem.models.ModelAllUser
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +18,7 @@ import javax.inject.Inject
 class HrViewModel @Inject constructor(private val apiServices: ApiServices) :ViewModel() {
 
 
-    private val _employeeLiveData = MutableLiveData<ModelAllUser?>()
+    private val _employeeLiveData = SingleLiveEvent<ModelAllUser?>()
     val employeeLiveData get() = _employeeLiveData
 
     fun getEmployee(type: String, fullName: String) {

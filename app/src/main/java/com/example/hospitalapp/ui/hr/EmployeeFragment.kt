@@ -94,8 +94,6 @@ class EmployeeFragment : Fragment() {
         }
         }
 
-
-
     private fun setupTypeAdapter() {
         adapterTypes.list = typesList
         binding.recyclerTypes.adapter = adapterTypes
@@ -118,7 +116,6 @@ class EmployeeFragment : Fragment() {
             response?.let {
                 val data = it.data
                 if (!data.isNullOrEmpty()) {
-                    // Set the list to the adapter
                     adapterEmployee.list = ArrayList(data)
                     binding.recyclerEmployee.visibility = View.VISIBLE
                     binding.recyclerEmployee.adapter = adapterEmployee

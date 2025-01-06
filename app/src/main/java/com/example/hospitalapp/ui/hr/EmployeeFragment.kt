@@ -45,7 +45,6 @@ class EmployeeFragment : Fragment() {
     private lateinit var status: String
     private lateinit var email: String
     private lateinit var phone: String
-    private var id: Int = 0
     private var searchJob: Job? = null
 
 
@@ -59,10 +58,42 @@ class EmployeeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentEmployeeBinding.bind(view)
+
         setupTypeAdapter()
         observer()
+        onUserClick()
         fetchEmployees(type, fullName)
+        displayData()
         onClicks()
+
+
+    }
+    override fun onStart() {
+        super.onStart()
+        type = "All"
+        fullName = ""
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        type = "All"
+        fullName = ""
+
+    }
+
+    private fun displayData(){
+        arguments?.let {
+            fullName = HrFragmentArgs.fromBundle(it).fullName
+            type = HrFragmentArgs.fromBundle(it).type
+            specialist = HrFragmentArgs.fromBundle(it).specialist
+            gender = HrFragmentArgs.fromBundle(it).gender
+            birthday = HrFragmentArgs.fromBundle(it).birthday
+            address = HrFragmentArgs.fromBundle(it).address
+            status = HrFragmentArgs.fromBundle(it).status
+            email = HrFragmentArgs.fromBundle(it).email
+            phone = HrFragmentArgs.fromBundle(it).phone
+        }
     }
 
     private fun onClicks() {
@@ -94,6 +125,29 @@ class EmployeeFragment : Fragment() {
         }
         }
 
+   private fun onUserClick(){
+
+       adapterEmployee.onUserClick = object : EmployeeAdapter.OnUserClick{
+           override fun onClick(id: Int) {
+               findNavController().navigate(EmployeeFragmentDirections.actionEmployeeFragmentToProfileFragment(
+                   id,
+                   fullName,
+                   type,
+                   specialist,
+                   gender,
+                   birthday,
+                   address,
+                   status,
+                   email,
+                   phone
+               ))
+           }
+
+       }
+    }
+
+
+
     private fun setupTypeAdapter() {
         adapterTypes.list = typesList
         binding.recyclerTypes.adapter = adapterTypes
@@ -103,6 +157,7 @@ class EmployeeFragment : Fragment() {
             fetchEmployees(type, fullName)
         }
     }
+
 
     private fun fetchEmployees(type: String, fullName: String) {
        lifecycleScope.launch(Dispatchers.IO) {

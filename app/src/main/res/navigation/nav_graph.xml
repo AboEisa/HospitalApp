@@ -127,7 +127,11 @@
             app:popExitAnim="@anim/animation4" />
         <action
             android:id="@+id/action_employeeFragment_to_profileFragment"
-            app:destination="@id/profileFragment" />
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/animation"
+            app:exitAnim="@anim/animation2"
+            app:popEnterAnim="@anim/animation3"
+            app:popExitAnim="@anim/animation4" />
     </fragment>
 
 
@@ -153,6 +157,9 @@
         tools:layout="@layout/fragment_profile">
 
         <!-- User Information Arguments -->
+        <argument
+            android:name="id"
+            app:argType="integer" />
         <argument
             android:name="fullName"
             app:argType="string" />

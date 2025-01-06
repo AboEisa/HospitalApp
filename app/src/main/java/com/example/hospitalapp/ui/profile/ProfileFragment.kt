@@ -9,6 +9,10 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.hospitalapp.R
 import com.example.hospitalapp.databinding.FragmentProfileBinding
+import com.example.hospitalapp.models.Data
+import com.example.hospitalapp.models.UserModel
+import com.example.hospitalapp.ui.hr.HrViewModel
+import com.vitatrack.hospitalsystem.models.ModelAllUser
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -24,16 +28,19 @@ class ProfileFragment : Fragment() {
     private lateinit var status: String
     private lateinit var email: String
     private lateinit var phone: String
-
+    private var userId: Int = 0
+    private val profileViewModel: ProfileViewModel by viewModels()
 
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentProfileBinding.bind(view)
-
+        userId = ProfileFragmentArgs.fromBundle(requireArguments()).id
+        profileViewModel.getProfile(userId)
         onClicks()
         displayUserData()
+        observer()
     }
 
     override fun onCreateView(
@@ -74,6 +81,35 @@ class ProfileFragment : Fragment() {
         binding.email.text = email
         binding.phone.text = phone
     }
+
+   private fun observer(){
+        profileViewModel.profileLiveData.observe(viewLifecycleOwner){response->
+            response?.let {
+                val data = it.data
+                val fullName = data.first_name + " " + data.last_name
+                binding.apply {
+                    textName.text = fullName
+                    firstName.text = data.specialist
+                    gender.text = data.gender
+                    birthday.text = data.birthday
+                    address.text = data.address
+                    status.text = data.status
+                    email.text = data.email
+                    phone.text = data.mobile
+                }
+
+
+
+            }
+        }
+    }
+
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 
 
 

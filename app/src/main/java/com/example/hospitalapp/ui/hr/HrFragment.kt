@@ -25,6 +25,7 @@ class HrFragment : Fragment() {
     private lateinit var status: String
     private lateinit var email: String
     private lateinit var phone: String
+    private var userId: Int = 0
     val hrvViewModel: HrViewModel by viewModels()
 
 
@@ -38,6 +39,7 @@ class HrFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHrBinding.bind(view)
+        userId = HrFragmentArgs.fromBundle(requireArguments()).id
         displayData()
         viewAndClicks()
     }
@@ -71,8 +73,7 @@ class HrFragment : Fragment() {
                 status = status,
                 email = email,
                 phone = phone,
-                id = id
-
+                id = userId
             ))
         }
         binding.cardEmployee.setOnClickListener {
@@ -86,7 +87,7 @@ class HrFragment : Fragment() {
                 status = status,
                 email = email,
                 phone = phone,
-                id = id.toString()
+                id = userId.toString()
             ))
 
 

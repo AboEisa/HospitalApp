@@ -10,6 +10,12 @@
         android:name="com.example.hospitalapp.ui.splash.SplashFragment"
         android:label="fragment_splash"
         tools:layout="@layout/fragment_splash">
+        <argument
+            android:name="id"
+            app:argType="integer"
+            android:defaultValue="-1"
+            />
+
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -25,6 +31,9 @@
         android:name="com.example.hospitalapp.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login">
+        <argument
+            android:name="id"
+            app:argType="integer" />
         <action
             android:id="@+id/action_loginFragment_to_hrFragment"
             app:destination="@id/hrFragment"
@@ -38,6 +47,9 @@
         android:name="com.example.hospitalapp.ui.hr.HrFragment"
         android:label="fragment_hr"
         tools:layout="@layout/fragment_hr">
+        <argument
+            android:name="id"
+            app:argType="integer" />
 
         <argument
             android:name="fullName"

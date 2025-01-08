@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- In dark mode, black and white might need to be inverted or adjusted -->
+    <color name="dark_mode_black">#FFFFFFFF</color> <!-- Black becomes white in dark mode -->
+    <color name="dark_mode_white">#FF000000</color> <!-- White becomes black in dark mode -->
+
+    <!-- Adjust main colors for better visibility in dark mode -->
+    <color name="dark_mode_main_color">#1A9C8F</color> <!-- A darker shade of the main color -->
+    <color name="dark_mode_purple">#7A4DB8</color> <!-- A darker shade of purple -->
+    <color name="dark_mode_orange">#C87A4D</color> <!-- A darker shade of orange -->
+    <color name="dark_mode_green">#4DB874</color> <!-- A darker shade of green -->
+    <color name="dark_mode_lightblue">#4DB8B8</color> <!-- A darker shade of light blue -->
+    <color name="dark_mode_profile">#128A7C</color> <!-- A darker shade of profile color -->
+    <color name="dark_mode_gray">#666666</color> <!-- A lighter shade of gray for better visibility -->
+    <color name="dark_mode_red">#9C1A1A</color> <!-- A darker shade of red -->
+</resources>

@@ -4,33 +4,31 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@color/profile"
-    tools:context=".ui.profile.ProfileFragment"
-    >
+    android:background="@color/main_color"
+    tools:context=".ui.profile.ProfileFragment">
 
-    <TextView
-        android:id="@+id/textHead"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        <TextView
+                android:id="@+id/textHead"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="My Profile"
+                android:textColor="?attr/colorOnSurface"
+                android:textSize="@dimen/_14sdp"
+                app:layout_constraintTop_toTopOf="@id/btn_back" />
 
-        android:gravity="center"
-        android:text="My Profile"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_14sdp"
-        app:layout_constraintTop_toTopOf="@id/btn_back" />
-    <ImageView
-        android:id="@+id/btn_back"
-        android:layout_width="@dimen/_30sdp"
-        android:layout_height="@dimen/_30sdp"
-        android:src="@drawable/back"
-        android:padding="@dimen/_3sdp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_margin="@dimen/_20sdp"
-        />
+        <ImageView
+                android:id="@+id/btn_back"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:src="@drawable/back"
+                android:padding="@dimen/_3sdp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_margin="@dimen/_20sdp"
+                app:tint="?attr/colorOnSurface" />
 
-
-    <androidx.cardview.widget.CardView
+<androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,189 +37,189 @@
         app:cardElevation="@dimen/_15sdp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="21dp">
+        tools:layout_editor_absoluteX="21dp"
+        android:background="?attr/colorSurface">
 
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingVertical="@dimen/_15sdp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingVertical="@dimen/_15sdp">
+    <TextView
+        android:id="@+id/text_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textColor="?attr/colorPrimary"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Omar Abdulrahmen" />
 
-            <TextView
-                android:id="@+id/text_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:textColor="@color/profile"
-                android:textSize="@dimen/_14sdp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="Omar Abdulrahmen" />
+    <ImageView
+        android:id="@+id/image_type"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:src="@drawable/profile_specialist"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_name"
+         />
 
+    <TextView
+        android:id="@+id/firstName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@id/image_type"
+        app:layout_constraintStart_toEndOf="@id/image_type"
+        app:layout_constraintTop_toTopOf="@+id/image_type"
+        tools:text="Specialist - Doctor" />
 
-            <ImageView
-                android:id="@+id/image_type"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:src="@drawable/profile_specialist"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_name" />
+    <ImageView
+        android:id="@+id/image_gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:src="@drawable/profile_gender"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_type"
+        />
 
-            <TextView
-                android:id="@+id/firstName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintBottom_toBottomOf="@id/image_type"
-                app:layout_constraintStart_toEndOf="@id/image_type"
-                app:layout_constraintTop_toTopOf="@+id/image_type"
-                tools:text="Specialist - Doctor" />
+    <TextView
+        android:id="@+id/gender"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@id/image_gender"
+        app:layout_constraintStart_toEndOf="@id/image_gender"
+        app:layout_constraintTop_toTopOf="@+id/image_gender"
+        tools:text="Male" />
 
+    <ImageView
+        android:id="@+id/image_birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:src="@drawable/profile_date"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_gender"
+         />
 
-            <ImageView
-                android:id="@+id/image_gender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:src="@drawable/profile_gender"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_type" />
+    <TextView
+        android:id="@+id/birthday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@id/image_birthday"
+        app:layout_constraintStart_toEndOf="@id/image_birthday"
+        app:layout_constraintTop_toTopOf="@+id/image_birthday"
+        tools:text="29-03-1997" />
 
-            <TextView
-                android:id="@+id/gender"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintBottom_toBottomOf="@id/image_gender"
-                app:layout_constraintStart_toEndOf="@id/image_gender"
-                app:layout_constraintTop_toTopOf="@+id/image_gender"
-                tools:text="Male" />
+    <ImageView
+        android:id="@+id/image_address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:src="@drawable/profile_address"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_birthday"
+         />
 
-            <ImageView
-                android:id="@+id/image_birthday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:src="@drawable/profile_date"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_gender" />
+    <TextView
+        android:id="@+id/address"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@id/image_address"
+        app:layout_constraintStart_toEndOf="@id/image_address"
+        app:layout_constraintTop_toTopOf="@+id/image_address"
+        tools:text="Mansoura , Shirben" />
 
-            <TextView
-                android:id="@+id/birthday"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintBottom_toBottomOf="@id/image_birthday"
-                app:layout_constraintStart_toEndOf="@id/image_birthday"
-                app:layout_constraintTop_toTopOf="@+id/image_birthday"
-                tools:text="29-03-1997" />
+    <ImageView
+        android:id="@+id/image_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:src="@drawable/profile_status"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_address"
+        />
 
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@id/image_status"
+        app:layout_constraintStart_toEndOf="@id/image_status"
+        app:layout_constraintTop_toTopOf="@+id/image_status"
+        tools:text="Single" />
 
-            <ImageView
-                android:id="@+id/image_address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:src="@drawable/profile_address"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_birthday" />
+    <ImageView
+        android:id="@+id/image_email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:src="@drawable/profile_email"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_status"
+         />
 
-            <TextView
-                android:id="@+id/address"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintBottom_toBottomOf="@id/image_address"
-                app:layout_constraintStart_toEndOf="@id/image_address"
-                app:layout_constraintTop_toTopOf="@+id/image_address"
-                tools:text="Mansoura , Shirben" />
+    <TextView
+        android:id="@+id/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@id/image_email"
+        app:layout_constraintStart_toEndOf="@id/image_email"
+        app:layout_constraintTop_toTopOf="@+id/image_email"
+        tools:text="ebrahemelzainy@gmail.com" />
 
+    <ImageView
+        android:id="@+id/image_phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:src="@drawable/profile_call"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/image_email"
+         />
 
-            <ImageView
-                android:id="@+id/image_status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:src="@drawable/profile_status"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_address" />
-
-            <TextView
-                android:id="@+id/status"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintBottom_toBottomOf="@id/image_status"
-                app:layout_constraintStart_toEndOf="@id/image_status"
-                app:layout_constraintTop_toTopOf="@+id/image_status"
-                tools:text="Single" />
-
-            <ImageView
-                android:id="@+id/image_email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:src="@drawable/profile_email"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_status" />
-
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintBottom_toBottomOf="@id/image_email"
-                app:layout_constraintStart_toEndOf="@id/image_email"
-                app:layout_constraintTop_toTopOf="@+id/image_email"
-                tools:text="ebrahemelzainy@gmail.com" />
-
-            <ImageView
-                android:id="@+id/image_phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_15sdp"
-                android:src="@drawable/profile_call"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/image_email" />
-
-            <TextView
-                android:id="@+id/phone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_13sdp"
-                app:layout_constraintBottom_toBottomOf="@id/image_phone"
-                app:layout_constraintStart_toEndOf="@id/image_phone"
-                app:layout_constraintTop_toTopOf="@+id/image_phone"
-                tools:text="096521145523" />
-
-
-
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-    </androidx.cardview.widget.CardView>
+    <TextView
+        android:id="@+id/phone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/_13sdp"
+        app:layout_constraintBottom_toBottomOf="@id/image_phone"
+        app:layout_constraintStart_toEndOf="@id/image_phone"
+        app:layout_constraintTop_toTopOf="@+id/image_phone"
+        tools:text="096521145523" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>

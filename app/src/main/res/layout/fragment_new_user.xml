@@ -28,10 +28,11 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:text="@string/new_user"
-            android:textColor="@color/black"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="@dimen/_14sdp"
             app:layout_constraintBottom_toBottomOf="@+id/btn_back"
             app:layout_constraintTop_toTopOf="@id/btn_back" />
+
         <ImageView
             android:id="@+id/btn_back"
             android:layout_width="@dimen/_30sdp"
@@ -41,7 +42,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             android:layout_margin="@dimen/_20sdp"
-            />
+            app:tint="?attr/colorOnSurface" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/firstName"
@@ -49,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_22sdp"
             android:backgroundTintMode="add"
-            android:textColorHint="#828282"
+            android:textColorHint="@color/gray"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
@@ -57,7 +58,7 @@
             app:boxStrokeColor="@color/main_color"
             app:boxStrokeWidth="1.5sp"
             app:endIconMode="none"
-            app:errorTextColor="#B71C1C"
+            app:errorTextColor="@color/red"
             app:hintEnabled="false"
             app:hintTextColor="@color/main_color"
             android:layout_marginTop="@dimen/_30sdp"
@@ -78,7 +79,7 @@
                 android:hint="@string/first_name"
                 android:inputType="textEmailAddress"
                 android:singleLine="true"
-                android:textColorHint="#828282" />
+                android:textColorHint="@color/gray" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -109,7 +110,7 @@
             app:boxStrokeColor="@color/main_color"
             app:boxStrokeWidth="1.5sp"
             app:endIconMode="none"
-            app:errorTextColor="#B71C1C"
+            app:errorTextColor="@color/red"
             app:hintEnabled="false"
             app:hintTextColor="@color/main_color"
             android:layout_marginTop="@dimen/_17sdp"
@@ -131,7 +132,7 @@
                 android:hint="@string/last_name"
                 android:inputType="text"
                 android:singleLine="true"
-                android:textColorHint="#828282" />
+                android:textColorHint="@color/gray" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -322,7 +323,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_22sdp"
             android:backgroundTintMode="add"
-            android:textColorHint="#828282"
+            android:textColorHint="@color/gray"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
@@ -351,7 +352,7 @@
                 android:hint="@string/phone_numberr"
                 android:inputType="phone"
                 android:singleLine="true"
-                android:textColorHint="#828282" />
+                android:textColorHint="@color/gray" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -376,7 +377,7 @@
             android:layout_marginTop="@dimen/_17sdp"
             android:background="@drawable/background_spinner"
             android:backgroundTintMode="add"
-            android:textColorHint="#828282"
+            android:textColorHint="@color/gray"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
@@ -404,7 +405,7 @@
                 android:hint="@string/e_mail"
                 android:inputType="textEmailAddress"
                 android:singleLine="true"
-                android:textColorHint="#828282" />
+                android:textColorHint="@color/gray" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -429,7 +430,7 @@
             android:layout_marginTop="@dimen/_17sdp"
             android:background="@drawable/background_spinner"
             android:backgroundTintMode="add"
-            android:textColorHint="#828282"
+            android:textColorHint="@color/gray"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
@@ -437,7 +438,7 @@
             app:boxStrokeColor="@color/main_color"
             app:boxStrokeWidth="1.5sp"
             app:endIconMode="none"
-            app:errorTextColor="#B71C1C"
+            app:errorTextColor="@color/red"
             app:hintEnabled="false"
             app:hintTextColor="@color/main_color"
             app:layout_constraintTop_toBottomOf="@+id/emailAddress"
@@ -456,7 +457,7 @@
                 android:hint="@string/address"
                 android:inputType="text"
                 android:singleLine="true"
-                android:textColorHint="#828282" />
+                android:textColorHint="@color/gray" />
 
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -478,7 +479,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="@dimen/_22sdp"
-            android:textColorHint="#828282"
+            android:textColorHint="@color/gray"
             app:boxCornerRadiusBottomEnd="10dp"
             app:boxCornerRadiusBottomStart="10dp"
             app:boxCornerRadiusTopEnd="10dp"
@@ -488,8 +489,6 @@
             app:boxStrokeWidth="1.5sp"
             app:endIconMode="password_toggle"
             app:endIconTint="@color/main_color"
-
-            app:errorTextColor="#B71C1CFF"
             app:hintEnabled="false"
             app:hintTextColor="@color/main_color"
             android:layout_marginTop="@dimen/_17sdp"
@@ -509,7 +508,7 @@
                 android:hint="@string/password"
                 android:inputType="textPassword"
                 android:singleLine="true"
-                android:textColorHint="#828282" />
+                android:textColorHint="@color/gray" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

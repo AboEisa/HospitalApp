@@ -35,18 +35,20 @@ class LoginFragment : Fragment() {
     lateinit var apiServices: ApiServices
 
     private val loginViewModel: LoginViewModel by viewModels()
+    private var userId: Int = 0
 
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentLoginBinding.inflate(inflater, container, false)
-        return binding.root
+       return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        _binding = FragmentLoginBinding.bind(view)
+        userId = LoginFragmentArgs.fromBundle(requireArguments()).id
         onClicks()
         observer()
     }
@@ -147,7 +149,10 @@ class LoginFragment : Fragment() {
                 address = address,
                 status = status,
                 email = email,
-                phone = phone
+                phone = phone,
+                id = userId
+
+
             )
 //            DOCTOR -> LoginFragmentDirections.actionLoginFragmentToDoctorFragment(
 //               fullName = fullName,

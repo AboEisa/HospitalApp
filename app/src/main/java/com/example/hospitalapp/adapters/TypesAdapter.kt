@@ -1,6 +1,7 @@
 package com.example.hospitalapp.adapters
 
 import android.content.Context
+import android.content.res.Configuration
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.TextView
@@ -22,6 +23,15 @@ class TypesAdapter : RecyclerView.Adapter<TypesAdapter.Holder>() {
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val type = list?.get(position)
         holder.textType.text = type
+
+        // Set text color dynamically based on the theme
+        val textColor = if (isSystemInDarkMode(holder.itemView.context)) {
+            holder.itemView.context.getColor(R.color.dark_mode_white) // Use light text in dark mode
+        } else {
+            holder.itemView.context.getColor(R.color.black) // Use dark text in light mode
+        }
+        holder.textType.setTextColor(textColor)
+
         holder.itemView.setOnClickListener {
             type?.let { onTypeClick?.invoke(it) }
         }
@@ -31,5 +41,11 @@ class TypesAdapter : RecyclerView.Adapter<TypesAdapter.Holder>() {
 
     inner class Holder(private val binding: ItemTypesBinding) : RecyclerView.ViewHolder(binding.root) {
         val textType: TextView = binding.textType
+    }
+
+    // Helper function to check if the system is in dark mode
+    private fun isSystemInDarkMode(context: Context): Boolean {
+        val nightModeFlags = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        return nightModeFlags == Configuration.UI_MODE_NIGHT_YES
     }
 }

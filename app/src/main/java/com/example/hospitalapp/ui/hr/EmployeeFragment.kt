@@ -58,28 +58,19 @@ class EmployeeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentEmployeeBinding.bind(view)
-
         setupTypeAdapter()
         observer()
         onUserClick()
         fetchEmployees(type, fullName)
         displayData()
         onClicks()
-
-
     }
-    override fun onStart() {
-        super.onStart()
-        type = "All"
-        fullName = ""
 
-    }
 
     override fun onResume() {
         super.onResume()
         type = "All"
         fullName = ""
-
     }
 
     private fun displayData(){
@@ -147,7 +138,6 @@ class EmployeeFragment : Fragment() {
     }
 
 
-
     private fun setupTypeAdapter() {
         adapterTypes.list = typesList
         binding.recyclerTypes.adapter = adapterTypes
@@ -158,13 +148,11 @@ class EmployeeFragment : Fragment() {
         }
     }
 
-
     private fun fetchEmployees(type: String, fullName: String) {
        lifecycleScope.launch(Dispatchers.IO) {
            hrViewModel.getEmployee(type, fullName)
        }
     }
-
 
     private fun observer() {
         hrViewModel.employeeLiveData.observe(viewLifecycleOwner) { response ->
@@ -184,9 +172,6 @@ class EmployeeFragment : Fragment() {
             }
         }
     }
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

@@ -14,6 +14,9 @@ import com.example.hospitalapp.R
 class SplashFragment : Fragment() {
 
 
+    private var userId: Int = 0
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -32,10 +35,13 @@ class SplashFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        userId = SplashFragmentArgs.fromBundle(requireArguments()).id
         //for splash screen
         Handler(Looper.getMainLooper())
             .postDelayed({
-                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment())
+                findNavController().navigate(SplashFragmentDirections.actionSplashFragmentToLoginFragment(
+                    id = userId
+                ))
             }, 2000)
 
     }

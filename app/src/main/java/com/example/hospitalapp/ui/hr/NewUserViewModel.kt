@@ -4,6 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hospitalapp.ApiServices
+import com.example.hospitalapp.SingleLiveEvent
 import com.example.hospitalapp.models.Data
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -13,7 +14,7 @@ import javax.inject.Inject
 class NewUserViewModel @Inject constructor(private val apiServices: ApiServices) : ViewModel() {
 
 
-    private val _registerLiveData = MutableLiveData<Data?>()
+    private val _registerLiveData = SingleLiveEvent<Data?>()
     val registerLiveData get() = _registerLiveData
 
 

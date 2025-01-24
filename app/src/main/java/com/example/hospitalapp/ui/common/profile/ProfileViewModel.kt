@@ -1,4 +1,4 @@
-package com.example.hospitalapp.ui.profile
+package com.example.hospitalapp.ui.common.profile
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope

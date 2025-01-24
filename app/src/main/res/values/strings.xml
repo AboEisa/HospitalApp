@@ -27,8 +27,17 @@
     <string name="invalid_email_password">The email or password is incorrect</string>
 
     <string name="api_error">Failed to connect to the server. Please try again.</string>
-
-
+    <string name="calls">Calls</string>
+    <string name="create_call">Create Call</string>
+    <string name="select_doctor">Select Doctor</string>
+    <string name="case_description">Case Description</string>
+    <string name="send_call">Send Call</string>
+    <string name="search_for_doctors">Search for doctors</string>
+    <string name="patient_name">Patient Name</string>
+    <string name="case_details">Case Details</string>
+    <string name="age">Age</string>
+    <string name="date">Date</string>
+    <string name="logout">Logout</string>
 
 
     <string-array name="gender_options">

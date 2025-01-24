@@ -176,17 +176,18 @@ class LoginFragment : Fragment() {
 //                email = email,
 //                phone = phone
 //            )
-//            RECEPTIONIST -> LoginFragmentDirections.actionLoginFragmentToReceptionistFragment(
-//                fullName = fullName,
-//                type = type,
-//                specialist = specialist,
-//                gender = gender,
-//                birthday = birthday,
-//                address = address,
-//                status = status,
-//                email = email,
-//                phone = phone
-//            )
+            RECEPTIONIST -> LoginFragmentDirections.actionLoginFragmentToReceptionistFragment(
+                fullName = fullName,
+                type = type,
+                specialist = specialist,
+                gender = gender,
+                birthday = birthday,
+                address = address,
+                status = status,
+                email = email,
+                phone = phone,
+                id = userId
+            )
 //            ANALYSIS -> LoginFragmentDirections.actionLoginFragmentToAnalysisFragment(
 //                fullName = fullName,
 //                type = type,

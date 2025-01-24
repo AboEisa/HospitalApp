@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.receptionist.CaseDetailsFragment">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/case_details"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:src="@drawable/back"
+        android:padding="@dimen/_4sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/_20sdp"
+        app:tint="?attr/colorOnSurface" />
+
+    <TextView
+        android:id="@+id/PatientName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/patient_name"
+        app:layout_constraintTop_toBottomOf="@id/textView1"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/gray"
+
+        />
+
+    <TextView
+        android:id="@+id/PatientInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Ebrahem Khaled"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_20sdp"
+
+        app:layout_constraintTop_toBottomOf="@id/textView1" />
+
+    <TextView
+        android:id="@+id/age"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/age"
+        app:layout_constraintTop_toBottomOf="@id/PatientName"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/gray"
+
+        />
+
+    <TextView
+        android:id="@+id/AgeInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="24 years"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_20sdp"
+
+        app:layout_constraintTop_toBottomOf="@id/PatientName" />
+
+
+
+    <TextView
+        android:id="@+id/PhoneNumber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/phone_number"
+        app:layout_constraintTop_toBottomOf="@id/age"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/gray"
+        />
+
+    <TextView
+        android:id="@+id/PhoneNumberInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="254110241423"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/age" />
+
+
+
+    <TextView
+        android:id="@+id/date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date"
+        app:layout_constraintTop_toBottomOf="@id/PhoneNumber"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/gray"
+
+        />
+
+    <TextView
+        android:id="@+id/dateInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:text="24 . 04 . 2021"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_20sdp"
+        app:layout_constraintTop_toBottomOf="@id/PhoneNumber" />
+
+
+
+    <TextView
+        android:id="@+id/status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/status"
+        app:layout_constraintTop_toBottomOf="@id/date"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/gray"
+        />
+
+
+    <TextView
+        android:id="@+id/statusInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_18sdp"
+        android:text="Process"
+        android:textSize="@dimen/_12sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+       android:layout_marginEnd="@dimen/_35sdp"
+        app:layout_constraintTop_toBottomOf="@id/date" />
+
+    <ImageView
+        android:id="@+id/statusImageInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:src="@drawable/pending"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginEnd="@dimen/_15sdp"
+        app:layout_constraintTop_toBottomOf="@id/date" />
+
+
+
+    <TextView
+        android:id="@+id/case_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/case_description"
+        app:layout_constraintTop_toBottomOf="@id/status"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/gray"
+
+        />
+
+
+
+    <TextView
+        android:id="@+id/text_description"
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_150sdp"
+        android:text="Details note : Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's"
+        app:layout_constraintTop_toBottomOf="@id/case_description"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginStart="@dimen/_20sdp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="@dimen/_12sdp"
+        android:textColor="@color/gray"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnLogin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:backgroundTint="#FF0000"
+        android:paddingVertical="@dimen/_12sdp"
+        android:text="@string/logout"
+        android:textColor="?attr/colorOnPrimary"
+        app:cornerRadius="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_15sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+         />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,6 +1,8 @@
 package com.example.hospitalapp
 
 
+import com.example.hospitalapp.models.Creation
+import com.example.hospitalapp.models.ShowCall
 import com.example.hospitalapp.models.UserModel
 import com.vitatrack.hospitalsystem.models.ModelAllUser
 
@@ -8,6 +10,7 @@ import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiServices {
@@ -54,6 +57,16 @@ interface ApiServices {
         @Field("user_id") userId: Int
     ): UserModel
 
+
+    @FormUrlEncoded
+    @POST
+    suspend fun createCall(
+        @Field("patient_name") name: String,
+        @Field("age") age: String,
+        @Field("doctor_id") doctorId: Int,
+        @Field("phone") phone: String,
+        @Field("description") description: String
+    ):Creation
 
 
 

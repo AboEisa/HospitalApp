@@ -1,4 +1,4 @@
-package com.example.hospitalapp.ui.profile
+package com.example.hospitalapp.ui.common.profile
 
 import android.os.Bundle
 import android.view.LayoutInflater

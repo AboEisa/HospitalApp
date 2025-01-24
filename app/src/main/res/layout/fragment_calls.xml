@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.receptionist.CallsFragment">
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/calls"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="@dimen/_14sdp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
+
+    <ImageView
+        android:id="@+id/btn_back"
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="@dimen/_30sdp"
+        android:src="@drawable/back"
+        android:padding="@dimen/_4sdp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_margin="@dimen/_20sdp"
+        app:tint="?attr/colorOnSurface" />
+
+
+
+    <TextView
+        android:id="@+id/text_date"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintWidth_percent="0.80"
+        android:layout_marginTop="@dimen/_12sdp"
+        tools:text="12-10-2010"
+        android:textColor="@color/black"
+        android:paddingStart="@dimen/_10sdp"
+        android:paddingVertical="@dimen/_7sdp"
+        app:layout_constraintStart_toStartOf="@id/btn_back"
+        app:layout_constraintTop_toBottomOf="@id/btn_back"
+        android:background="@drawable/background_spinner"
+        />
+
+    <ImageView
+        android:id="@+id/dateBacker"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:scaleType="fitEnd"
+        android:src="@drawable/date_backer"
+        app:layout_constraintBottom_toBottomOf="@+id/text_date"
+        app:layout_constraintEnd_toEndOf="@+id/text_date"
+        app:layout_constraintTop_toTopOf="@+id/text_date" />
+
+    <ImageView
+        android:id="@+id/addCall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/create_call"
+        app:layout_constraintBottom_toBottomOf="@+id/text_date"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/text_date"
+        app:layout_constraintTop_toTopOf="@+id/text_date" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/_30sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_date"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/item_call"
+        />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

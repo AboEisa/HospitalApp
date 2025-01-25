@@ -18,7 +18,6 @@ class EmployeeAdapter() : RecyclerView.Adapter<EmployeeAdapter.Holder>() {
 
     override fun onBindViewHolder(holder: Holder, position: Int) {
         val data = list?.get(position)
-
             holder.textName.text = data?.first_name
             holder.textType.text = data?.type
     }

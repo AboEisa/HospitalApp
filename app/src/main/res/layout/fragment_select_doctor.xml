@@ -32,7 +32,7 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/email"
+        android:id="@+id/textSearch"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_22sdp"
@@ -48,33 +48,64 @@
         app:errorTextColor="@color/red"
         app:hintEnabled="false"
         app:hintTextColor="?attr/colorPrimary"
-       android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintTop_toBottomOf="@+id/textView1"
-        app:placeholderText="Email"
+        app:placeholderText="@string/search_for_doctors"
         app:startIconTint="?attr/colorPrimary"
        >
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/textEmail"
+            android:id="@+id/textsearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/background_spinner"
             android:drawableStart="@drawable/search"
             android:drawablePadding="@dimen/_6sdp"
             android:hint="@string/search_for_doctors"
-            android:inputType="textEmailAddress"
+            android:inputType="text"
             android:singleLine="true"
             android:textColorHint="@color/gray" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnSelectDoctor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:backgroundTint="?attr/colorPrimary"
+        android:paddingVertical="@dimen/_12sdp"
+        android:text="Select Doctor"
+        android:textColor="?attr/colorOnPrimary"
+        app:cornerRadius="@dimen/_5sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="@dimen/_15sdp"
+        />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/selectDoctor"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="@dimen/_15sdp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+
+        app:layout_constraintBottom_toTopOf="@+id/btnSelectDoctor"
+        app:layout_constraintTop_toBottomOf="@+id/textSearch"
+        tools:listitem="@layout/item_selectdoctor" />
+
+
+    <TextView
+        android:id="@+id/noResultsPlaceholder"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="No results found"
+        android:textColor="?attr/colorOnSurface"
+        android:textSize="16sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
-        tools:listitem="@layout/item_selectdoctor"
-        app:layout_constraintTop_toBottomOf="@+id/email" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

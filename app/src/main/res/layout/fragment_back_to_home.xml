@@ -20,7 +20,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="The request has been canceled \successfully"
+        android:text="The request has been successfully"
         app:layout_constraintEnd_toEndOf="parent"
         android:textSize="@dimen/_17sdp"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +34,7 @@
 
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnHome"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_20sdp"

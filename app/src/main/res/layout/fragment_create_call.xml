@@ -51,7 +51,6 @@
         app:hintTextColor="@color/main_color"
         android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintTop_toBottomOf="@+id/textView1"
-        app:placeholderText="@string/patient_name"
         app:startIconTint="@color/main_color"
        >
 
@@ -91,7 +90,7 @@
         app:hintTextColor="@color/main_color"
         android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintTop_toBottomOf="@+id/PatientName"
-        app:placeholderText="Age"
+
         app:startIconTint="@color/main_color"
         tools:layout_editor_absoluteX="31dp">
 
@@ -105,6 +104,7 @@
             android:hint="Age"
             android:inputType="number"
             android:singleLine="true"
+            android:maxLength="2"
             android:textColorHint="@color/gray" />
 
 
@@ -131,9 +131,9 @@
         app:hintTextColor="@color/main_color"
         android:layout_marginTop="@dimen/_20sdp"
         app:layout_constraintTop_toBottomOf="@+id/age"
-        app:placeholderText="@string/first_name"
+
         app:startIconTint="@color/main_color"
-        tools:layout_editor_absoluteX="31dp">
+        >
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textPhoneNumber"
@@ -142,7 +142,7 @@
             android:background="@drawable/background_spinner"
             android:drawablePadding="@dimen/_6sdp"
             android:drawableTint="@color/main_color"
-            android:hint="@string/first_name"
+            android:hint="@string/phone_number"
             android:inputType="phone"
             android:singleLine="true"
             android:textColorHint="@color/gray" />
@@ -152,12 +152,13 @@
 
 
     <TextView
-        android:id="@+id/birthday"
+        android:id="@+id/selectDoctor"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_22sdp"
         android:background="@drawable/background_spinner"
         android:clickable="true"
+        android:editable="false"
         android:drawablePadding="@dimen/_10sdp"
         android:focusable="true"
         android:hint="@string/select_doctor"
@@ -171,25 +172,21 @@
         app:layout_constraintTop_toBottomOf="@+id/PhoneNumber" />
 
 
-    <TextView
+    <EditText
         android:id="@+id/case_description"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_150sdp"
         android:layout_marginHorizontal="@dimen/_22sdp"
         android:background="@drawable/background_spinner"
         android:clickable="true"
-        android:drawablePadding="@dimen/_10sdp"
         android:focusable="true"
-        android:hint="@string/case_description"
-        android:maxLines="1"
-        android:padding="@dimen/_10sdp"
         android:textColor="@color/black"
         android:textSize="@dimen/_12sdp"
         android:layout_marginTop="@dimen/_20sdp"
-        app:layout_constraintTop_toBottomOf="@+id/birthday" />
+        app:layout_constraintTop_toBottomOf="@+id/selectDoctor" />
 
     <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnLogin"
+        android:id="@+id/btnCreateCall"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="@dimen/_20sdp"

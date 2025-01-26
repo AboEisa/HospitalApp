@@ -33,8 +33,9 @@
     <TextView
         android:id="@+id/text_date"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintWidth_percent="0.80"
+        app:layout_constraintHeight_percent="0.045"
         android:layout_marginTop="@dimen/_12sdp"
         tools:text="12-10-2010"
         android:textColor="@color/black"
@@ -48,8 +49,8 @@
     <ImageView
         android:id="@+id/dateBacker"
         android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:scaleType="fitEnd"
+        android:layout_height="wrap_content"
+
         android:src="@drawable/date_backer"
         app:layout_constraintBottom_toBottomOf="@+id/text_date"
         app:layout_constraintEnd_toEndOf="@+id/text_date"
@@ -60,6 +61,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/create_call"
+
         app:layout_constraintBottom_toBottomOf="@+id/text_date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/text_date"

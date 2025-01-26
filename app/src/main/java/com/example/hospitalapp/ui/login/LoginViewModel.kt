@@ -10,12 +10,13 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 
 
 @HiltViewModel
 class LoginViewModel @Inject constructor(private val apiServices: ApiServices) : ViewModel() {
 
-    private val _loginLiveData = SingleLiveEvent<UserModel?>()
+    private val _loginLiveData = MutableLiveData<UserModel?>()
     val loginLiveData  get() = _loginLiveData
 
     fun login(email: String, password: String, deviceToken: String ) {
@@ -23,10 +24,14 @@ class LoginViewModel @Inject constructor(private val apiServices: ApiServices) :
             try {
                 val response = apiServices.login(email, password, deviceToken)
               if (response.status == 1){
-                  _loginLiveData.postValue(response)
+                 withContext(Dispatchers.Main){
+                     _loginLiveData.postValue(response)
+                 }
               }
             } catch (e: Exception) {
-                _loginLiveData.postValue(null)
+              withContext(Dispatchers.Main){
+                  _loginLiveData.postValue(null)
+              }
             }
         }
     }

@@ -12,13 +12,14 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class HrViewModel @Inject constructor(private val apiServices: ApiServices) :ViewModel() {
 
 
-    private val _employeeLiveData = SingleLiveEvent<ModelAllUser?>()
+    private val _employeeLiveData = MutableLiveData<ModelAllUser?>()
     val employeeLiveData get() = _employeeLiveData
 
     fun getEmployee(type: String, fullName: String) {
@@ -26,12 +27,18 @@ class HrViewModel @Inject constructor(private val apiServices: ApiServices) :Vie
             try {
                 val response = apiServices.getEmployee(type, fullName)
                 if (response.status == 1) {
-                    _employeeLiveData.postValue(response)
+                    withContext(Dispatchers.Main) {
+                        _employeeLiveData.postValue(response)
+                    }
                 } else {
-                    _employeeLiveData.postValue(null)
+                  withContext(Dispatchers.Main) {
+                      _employeeLiveData.postValue(null)
+                  }
                 }
             } catch (e: Exception) {
-                _employeeLiveData.postValue(null)
+              withContext(Dispatchers.Main) {
+                  _employeeLiveData.postValue(null)
+              }
             }
         }
     }

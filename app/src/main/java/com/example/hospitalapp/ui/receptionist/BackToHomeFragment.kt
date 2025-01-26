@@ -76,7 +76,13 @@ class BackToHomeFragment : Fragment() {
                 phone = phone,
                 id = userId
             ))
+
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
 

@@ -165,6 +165,11 @@ class CreateCallFragment : Fragment() {
             description
         )
     }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
+    }
 }
 
 

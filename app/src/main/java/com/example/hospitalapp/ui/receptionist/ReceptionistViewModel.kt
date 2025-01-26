@@ -1,5 +1,6 @@
 package com.example.hospitalapp.ui.receptionist
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.hospitalapp.ApiServices
@@ -16,7 +17,7 @@ import javax.inject.Inject
 class ReceptionistViewModel@Inject constructor(private val apiServices: ApiServices) :ViewModel( ) {
 
 
-    private val _callsLiveData = SingleLiveEvent<ModelAllCalls?>()
+    private val _callsLiveData = MutableLiveData<ModelAllCalls?>()
     val callsLiveData get() = _callsLiveData
 
 
@@ -37,7 +38,7 @@ class ReceptionistViewModel@Inject constructor(private val apiServices: ApiServi
         }
 
 
-    private val _createCallLiveData = SingleLiveEvent<Creation?>()
+    private val _createCallLiveData = MutableLiveData<Creation?>()
     val createCallLiveData get() = _createCallLiveData
 
 
@@ -56,7 +57,7 @@ class ReceptionistViewModel@Inject constructor(private val apiServices: ApiServi
         }
     }
 
-    private val _selectDoctorLiveData = SingleLiveEvent<ModelAllUser?>()
+    private val _selectDoctorLiveData = MutableLiveData<ModelAllUser?>()
     val selectDoctorLiveData get() = _selectDoctorLiveData
 
     fun selectDoctor( type: String, name: String){
@@ -64,12 +65,18 @@ class ReceptionistViewModel@Inject constructor(private val apiServices: ApiServi
             val response = apiServices.getEmployee(type, name)
             try {
                 if (response.status == 1){
-                    _selectDoctorLiveData.postValue(response)
+                   with(Dispatchers.Main){
+                       _selectDoctorLiveData.postValue(response)
+                   }
                 }else{
-                    _selectDoctorLiveData.postValue(null)
+                    with(Dispatchers.Main){
+                        _selectDoctorLiveData.postValue(null)
+                    }
                 }
             }catch (e:Exception){
-                _selectDoctorLiveData.postValue(null)
+                with(Dispatchers.Main){
+                    _selectDoctorLiveData.postValue(null)
+                }
                 }
         }
     }

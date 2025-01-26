@@ -103,6 +103,7 @@ class LoginFragment : Fragment() {
 
     private fun observer() {
         loginViewModel.loginLiveData.observe(viewLifecycleOwner) { data ->
+            if (view == null) return@observe
             if (data != null && data.status == 1) {
                 val responseData = data.data
                 responseData.let {
@@ -218,17 +219,6 @@ class LoginFragment : Fragment() {
         }
         findNavController().navigate(action)
     }
-
-
-
-
-
-
-
-
-
-
-
 
 
     override fun onDestroyView() {

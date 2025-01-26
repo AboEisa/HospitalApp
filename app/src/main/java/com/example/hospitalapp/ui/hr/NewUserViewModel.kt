@@ -9,12 +9,13 @@ import com.example.hospitalapp.models.Data
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 @HiltViewModel
 class NewUserViewModel @Inject constructor(private val apiServices: ApiServices) : ViewModel() {
 
 
-    private val _registerLiveData = SingleLiveEvent<Data?>()
+    private val _registerLiveData = MutableLiveData<Data?>()
     val registerLiveData get() = _registerLiveData
 
 
@@ -47,10 +48,14 @@ class NewUserViewModel @Inject constructor(private val apiServices: ApiServices)
             )
            try {
                if (response.status == 1 ){
-                   _registerLiveData.postValue(response.data)
+                  withContext(Dispatchers.Main){
+                      _registerLiveData.postValue(response.data)
+                  }
                }
            }catch (e:Exception){
-               _registerLiveData.postValue(null)
+             withContext(Dispatchers.Main){
+                 _registerLiveData.postValue(null)
+             }
         }
 
         }

@@ -80,13 +80,13 @@ class CallsFragment : Fragment() {
 
 
 
-    fun fetchCalls(date: String) {
+   private fun fetchCalls(date: String) {
         lifecycleScope.launch(Dispatchers.Main) {
             receptionistViewModel.getCalls(date)
         }
     }
 
-    fun observer() {
+   private fun observer() {
         receptionistViewModel.callsLiveData.observe(viewLifecycleOwner) { response ->
             response?.let {
                 val data = it.data
@@ -107,7 +107,7 @@ class CallsFragment : Fragment() {
     }
 
 
-    fun onClicks() {
+   private fun onClicks() {
         binding.apply {
             addCall.setOnClickListener {
                 findNavController().navigate(CallsFragmentDirections.actionCallsFragmentToCreateCallFragment(
@@ -167,6 +167,11 @@ class CallsFragment : Fragment() {
             })
 
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
 

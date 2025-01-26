@@ -40,11 +40,11 @@ class HrFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentHrBinding.bind(view)
         userId = HrFragmentArgs.fromBundle(requireArguments()).id
-        displayData()
+        passData()
         viewAndClicks()
     }
 
-    private fun displayData(){
+    private fun passData(){
         arguments?.let {
             fullName = HrFragmentArgs.fromBundle(it).fullName
             type = HrFragmentArgs.fromBundle(it).type

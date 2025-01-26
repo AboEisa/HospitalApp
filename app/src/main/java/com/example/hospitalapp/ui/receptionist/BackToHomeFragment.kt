@@ -36,26 +36,27 @@ class BackToHomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentBackToHomeBinding.bind(view)
-//        displayData()
-//        onClicks()
+        passData()
+        onClicks()
 
     }
 
 
-    private fun displayData(){
-        arguments?.let {
-            fullName = ReceptionistFragmentArgs.fromBundle(it).fullName
-            type = ReceptionistFragmentArgs.fromBundle(it).type
-            specialist = ReceptionistFragmentArgs.fromBundle(it).specialist
-            gender = ReceptionistFragmentArgs.fromBundle(it).gender
-            birthday = ReceptionistFragmentArgs.fromBundle(it).birthday
-            address = ReceptionistFragmentArgs.fromBundle(it).address
-            status = ReceptionistFragmentArgs.fromBundle(it).status
-            email = ReceptionistFragmentArgs.fromBundle(it).email
-            phone = ReceptionistFragmentArgs.fromBundle(it).phone
-            userId = ReceptionistFragmentArgs.fromBundle(it).id
-        }
+    private fun passData(){
 
+        arguments?.let {
+           val args =  BackToHomeFragmentArgs.fromBundle(it)
+            fullName = args.fullName
+            type = args.type
+            specialist = args.specialist
+            gender = args.gender
+            birthday =args.birthday
+            address = args.address
+            status = args.status
+            email = args.email
+            phone = args.phone
+            userId = args.id
+        }
 
     }
 

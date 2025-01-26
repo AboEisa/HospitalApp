@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.example.hospitalapp.R
 import com.example.hospitalapp.databinding.FragmentCreateCallBinding
+import com.example.hospitalapp.ui.hr.HrFragmentArgs
 import dagger.hilt.android.AndroidEntryPoint
 
 
@@ -19,6 +20,16 @@ class CreateCallFragment : Fragment() {
     private var _binding: FragmentCreateCallBinding? = null
     private val binding get() = _binding!!
    private val receptionistViewModel: ReceptionistViewModel by viewModels()
+    private lateinit var type: String
+    private lateinit var fullName: String
+    private lateinit var specialist: String
+    private lateinit var gender: String
+    private lateinit var birthday: String
+    private lateinit var address: String
+    private lateinit var status: String
+    private lateinit var email: String
+    private lateinit var phone: String
+    private var userId: Int = 0
 
 
     override fun onCreateView(
@@ -36,9 +47,28 @@ class CreateCallFragment : Fragment() {
             ?.observe(viewLifecycleOwner) { doctorName ->
                 binding.selectDoctor.setText(doctorName) // Display the selected doctor's name in the textbox
             }
+        passData()
         onClicks()
 
     }
+
+
+    private fun passData(){
+        arguments?.let {
+            fullName = CreateCallFragmentArgs.fromBundle(it).fullName
+            type = CreateCallFragmentArgs.fromBundle(it).type
+            specialist = CreateCallFragmentArgs.fromBundle(it).specialist
+            gender = CreateCallFragmentArgs.fromBundle(it).gender
+            birthday = CreateCallFragmentArgs.fromBundle(it).birthday
+            address = CreateCallFragmentArgs.fromBundle(it).address
+            status = CreateCallFragmentArgs.fromBundle(it).status
+            email = CreateCallFragmentArgs.fromBundle(it).email
+            phone = CreateCallFragmentArgs.fromBundle(it).phone
+            userId = CreateCallFragmentArgs.fromBundle(it).id
+        }
+    }
+
+
 
    private fun validate(): Boolean {
 
@@ -100,7 +130,18 @@ class CreateCallFragment : Fragment() {
                         textAge.text?.clear()
                         textPhoneNumber.text?.clear()
                         caseDescription.text?.clear()
-                        findNavController().navigate(CreateCallFragmentDirections.actionCreateCallFragmentToBackToHomeFragment())
+                        findNavController().navigate(CreateCallFragmentDirections.actionCreateCallFragmentToBackToHomeFragment(
+                            id = userId,
+                            fullName = fullName,
+                            type = type,
+                            specialist = specialist,
+                            gender = gender,
+                            birthday = birthday,
+                            address = address,
+                            status = status,
+                            email = email,
+                            phone = phone
+                        ))
                     } else {
                         Toast.makeText(requireContext(), "Doctor not selected", Toast.LENGTH_SHORT)
                             .show()

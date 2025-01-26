@@ -14,6 +14,7 @@ import androidx.navigation.fragment.findNavController
 import com.example.hospitalapp.R
 import com.example.hospitalapp.adapters.CallsAdapter
 import com.example.hospitalapp.databinding.FragmentCallsBinding
+import com.example.hospitalapp.ui.hr.HrFragmentArgs
 import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
@@ -30,8 +31,18 @@ class CallsFragment : Fragment() {
     val binding get() = _binding!!
     private val receptionistViewModel: ReceptionistViewModel by viewModels()
     private val adapterCalls: CallsAdapter by lazy { CallsAdapter() }
-    private var date: String = "2021-05-09"
+    private var date: String = ""
     private var searchJob: Job? = null
+    private lateinit var type: String
+    private lateinit var fullName: String
+    private lateinit var specialist: String
+    private lateinit var gender: String
+    private lateinit var birthday: String
+    private lateinit var address: String
+    private lateinit var status: String
+    private lateinit var email: String
+    private lateinit var phone: String
+    private var userId: Int = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -46,8 +57,27 @@ class CallsFragment : Fragment() {
         _binding = FragmentCallsBinding.bind(view)
         fetchCalls(date)
         observer()
+        passData()
         onClicks()
     }
+
+    private fun passData(){
+        arguments?.let {
+            val args = CallsFragmentArgs.fromBundle(it)
+            fullName =args.fullName
+            type = args.type
+            specialist = args.specialist
+            gender = args.gender
+            birthday = args.birthday
+            address = args.address
+            status = args.status
+            email = args.email
+            phone = args.phone
+            userId = args.id
+        }
+
+    }
+
 
 
     fun fetchCalls(date: String) {
@@ -80,7 +110,18 @@ class CallsFragment : Fragment() {
     fun onClicks() {
         binding.apply {
             addCall.setOnClickListener {
-                findNavController().navigate(CallsFragmentDirections.actionCallsFragmentToCreateCallFragment())
+                findNavController().navigate(CallsFragmentDirections.actionCallsFragmentToCreateCallFragment(
+                    id = userId,
+                    fullName = fullName,
+                    type = type,
+                    specialist = specialist,
+                    gender = gender,
+                    birthday = birthday,
+                    address = address,
+                    status = status,
+                    email = email,
+                    phone = phone
+                ))
             }
             binding.btnBack.setOnClickListener {
                 findNavController().popBackStack()

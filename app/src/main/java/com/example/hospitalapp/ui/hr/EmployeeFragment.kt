@@ -62,7 +62,7 @@ class EmployeeFragment : Fragment() {
         observer()
         onUserClick()
         fetchEmployees(type, fullName)
-        displayData()
+        passData()
         onClicks()
     }
 
@@ -73,7 +73,7 @@ class EmployeeFragment : Fragment() {
         fullName = ""
     }
 
-    private fun displayData(){
+    private fun passData(){
         arguments?.let {
             fullName = HrFragmentArgs.fromBundle(it).fullName
             type = HrFragmentArgs.fromBundle(it).type

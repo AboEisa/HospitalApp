@@ -215,7 +215,8 @@
         tools:layout="@layout/fragment_receptionist" >
         <argument
             android:name="id"
-            app:argType="integer" />
+            app:argType="integer"
+            />
         <argument
             android:name="fullName"
             app:argType="string" />
@@ -263,6 +264,37 @@
         android:name="com.example.hospitalapp.ui.receptionist.CallsFragment"
         android:label="fragment_calls"
         tools:layout="@layout/fragment_calls" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            />
+        <argument
+            android:name="fullName"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="specialist"
+            app:argType="string" />
+        <argument
+            android:name="gender"
+            app:argType="string" />
+        <argument
+            android:name="birthday"
+            app:argType="string" />
+        <argument
+            android:name="address"
+            app:argType="string" />
+        <argument
+            android:name="status"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
         <action
             android:id="@+id/action_callsFragment_to_createCallFragment"
             app:destination="@id/createCallFragment"
@@ -276,6 +308,37 @@
         android:name="com.example.hospitalapp.ui.receptionist.CreateCallFragment"
         android:label="fragment_create_call"
         tools:layout="@layout/fragment_create_call" >
+        <argument
+            android:name="id"
+            app:argType="integer"
+            />
+        <argument
+            android:name="fullName"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="specialist"
+            app:argType="string" />
+        <argument
+            android:name="gender"
+            app:argType="string" />
+        <argument
+            android:name="birthday"
+            app:argType="string" />
+        <argument
+            android:name="address"
+            app:argType="string" />
+        <argument
+            android:name="status"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
         <action
             android:id="@+id/action_createCallFragment_to_selectDoctorFragment"
             app:destination="@id/selectDoctorFragment"
@@ -309,6 +372,37 @@
         android:name="com.example.hospitalapp.ui.receptionist.BackToHomeFragment"
         android:label="fragment_back_to_home"
         tools:layout="@layout/fragment_back_to_home" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+        <argument
+            android:name="fullName"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="specialist"
+            app:argType="string" />
+        <argument
+            android:name="gender"
+            app:argType="string" />
+        <argument
+            android:name="birthday"
+            app:argType="string" />
+        <argument
+            android:name="address"
+            app:argType="string" />
+        <argument
+            android:name="status"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
+
         <action
             android:id="@+id/action_backToHomeFragment_to_receptionistFragment"
             app:destination="@id/receptionistFragment"

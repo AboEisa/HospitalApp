@@ -46,11 +46,11 @@ class ReceptionistFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentReceptionistBinding.bind(view)
-        displayData()
+        passData()
         onClicks()
     }
 
-    private fun displayData(){
+    private fun passData(){
         arguments?.let {
             fullName = ReceptionistFragmentArgs.fromBundle(it).fullName
             type = ReceptionistFragmentArgs.fromBundle(it).type
@@ -73,6 +73,16 @@ class ReceptionistFragment : Fragment() {
     private fun onClicks(){
         binding.cardCalls.setOnClickListener {
             findNavController().navigate(ReceptionistFragmentDirections.actionReceptionistFragmentToCallsFragment(
+                id = userId,
+                fullName = fullName,
+                type = type,
+                specialist = specialist,
+                gender = gender,
+                birthday = birthday,
+                address = address,
+                status = status,
+                email = email,
+                phone = phone
             ))
         }
         binding

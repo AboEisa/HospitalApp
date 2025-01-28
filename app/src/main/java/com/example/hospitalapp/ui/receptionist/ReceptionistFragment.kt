@@ -63,9 +63,9 @@ class ReceptionistFragment : Fragment() {
             phone = ReceptionistFragmentArgs.fromBundle(it).phone
             userId = ReceptionistFragmentArgs.fromBundle(it).id
         }
-        binding.userType.text = type
+        binding.userType.text = "Specialist -  $type"
         binding.headName.text = fullName
-        binding.userType.text = specialist
+
     }
 
 

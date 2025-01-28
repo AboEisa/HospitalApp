@@ -71,7 +71,14 @@ class EmployeeFragment : Fragment() {
         super.onResume()
         type = "All"
         fullName = ""
+        val selectedIndex = typesList.indexOf(type)
+        if (selectedIndex != -1) {
+            adapterTypes.setSelectedPosition(selectedIndex)
+        }
+        adapterTypes.notifyDataSetChanged()
+
     }
+
 
     private fun passData(){
         arguments?.let {

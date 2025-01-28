@@ -36,8 +36,8 @@ class ProfileFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentProfileBinding.bind(view)
-        userId = ProfileFragmentArgs.fromBundle(requireArguments()).id
-        profileViewModel.getProfile(userId)
+        val id = ProfileFragmentArgs.fromBundle(requireArguments()).id
+        profileViewModel.getProfile(id)
         onClicks()
         displayUserData()
         observer()
@@ -73,7 +73,7 @@ class ProfileFragment : Fragment() {
             phone = ProfileFragmentArgs.fromBundle(it).phone
         }
         binding.textName.text = fullName
-        binding.firstName.text = specialist
+        binding.firstName.text = "Specialist -  $type"
         binding.gender.text = gender
         binding.birthday.text = birthday
         binding.address.text = address

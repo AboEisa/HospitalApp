@@ -95,7 +95,6 @@ class CallsFragment : Fragment() {
                     binding.recyclerCalls.visibility = View.VISIBLE
                     binding.recyclerCalls.adapter = adapterCalls
                     adapterCalls.notifyDataSetChanged()
-
                 } else {
                     adapterCalls.list = arrayListOf()
                     binding.recyclerCalls.visibility = View.GONE

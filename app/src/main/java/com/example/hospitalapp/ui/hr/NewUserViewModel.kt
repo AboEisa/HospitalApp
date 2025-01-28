@@ -1,5 +1,6 @@
 package com.example.hospitalapp.ui.hr
 
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -16,7 +17,7 @@ class NewUserViewModel @Inject constructor(private val apiServices: ApiServices)
 
 
     private val _registerLiveData = MutableLiveData<Data?>()
-    val registerLiveData get() = _registerLiveData
+    val registerLiveData: LiveData<Data?> get() = _registerLiveData
 
 
      fun register(

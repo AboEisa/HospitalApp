@@ -56,9 +56,9 @@ class HrFragment : Fragment() {
             email = HrFragmentArgs.fromBundle(it).email
             phone = HrFragmentArgs.fromBundle(it).phone
         }
-        binding.userType.text = type
+        binding.userType.text = "Specialist -  $type"
         binding.headName.text = fullName
-        binding.userType.text = specialist
+
     }
 
     private fun viewAndClicks() {

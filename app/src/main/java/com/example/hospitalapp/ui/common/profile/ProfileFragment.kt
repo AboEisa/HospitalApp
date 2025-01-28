@@ -40,7 +40,7 @@ class ProfileFragment : Fragment() {
         profileViewModel.getProfile(userId)
         onClicks()
         displayUserData()
-//        observer()
+        observer()
     }
 
     override fun onCreateView(
@@ -82,27 +82,27 @@ class ProfileFragment : Fragment() {
         binding.phone.text = phone
     }
 
-//   private fun observer(){
-//        profileViewModel.profileLiveData.observe(viewLifecycleOwner){response->
-//            response?.let {
-//                val data = it.data
-//                val fullName = data.first_name + " " + data.last_name
-//                binding.apply {
-//                    textName.text = fullName
-//                    firstName.text = data.specialist
-//                    gender.text = data.gender
-//                    birthday.text = data.birthday
-//                    address.text = data.address
-//                    status.text = data.status
-//                    email.text = data.email
-//                    phone.text = data.mobile
-//                }
-//
-//
-//
-//            }
-//        }
-//    }
+   private fun observer(){
+        profileViewModel.profileLiveData.observe(viewLifecycleOwner){response->
+            response?.let {
+                val data = it.data
+                val fullName = data.first_name + " " + data.last_name
+                binding.apply {
+                    textName.text = fullName
+                    firstName.text = data.specialist
+                    gender.text = data.gender
+                    birthday.text = data.birthday
+                    address.text = data.address
+                    status.text = data.status
+                    email.text = data.email
+                    phone.text = data.mobile
+                }
+
+
+
+            }
+        }
+    }
 
 
     override fun onDestroyView() {

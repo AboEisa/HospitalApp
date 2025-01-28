@@ -1,5 +1,6 @@
 package com.example.hospitalapp.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.res.Configuration
 import android.view.LayoutInflater
@@ -8,31 +9,36 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.hospitalapp.R
 import com.example.hospitalapp.databinding.ItemTypesBinding
-import com.example.hospitalapp.models.Data
 
 class TypesAdapter : RecyclerView.Adapter<TypesAdapter.Holder>() {
 
     var list: ArrayList<String>? = null
     var onTypeClick: ((String) -> Unit)? = null
+    private var selectedPosition: Int = -1 // Track the selected position
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Holder {
         val binding = ItemTypesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return Holder(binding)
     }
 
-    override fun onBindViewHolder(holder: Holder, position: Int) {
+    override fun onBindViewHolder(holder: Holder, @SuppressLint("RecyclerView") position: Int) {
         val type = list?.get(position)
         holder.textType.text = type
 
-        // Set text color dynamically based on the theme
-        val textColor = if (isSystemInDarkMode(holder.itemView.context)) {
-            holder.itemView.context.getColor(R.color.dark_mode_white) // Use light text in dark mode
+        if (selectedPosition == position) {
+            holder.textType.setBackgroundResource(R.drawable.select_type_style)
         } else {
-            holder.itemView.context.getColor(R.color.black) // Use dark text in light mode
+            holder.textType.setBackgroundResource(R.drawable.types_background)
         }
-        holder.textType.setTextColor(textColor)
 
         holder.itemView.setOnClickListener {
+            // Update selected position and refresh the views
+            val previousPosition = selectedPosition
+            selectedPosition = position
+            notifyItemChanged(previousPosition) // Refresh the previously selected item
+            notifyItemChanged(selectedPosition) // Refresh the newly selected item
+
+            // Trigger the click callback
             type?.let { onTypeClick?.invoke(it) }
         }
     }
@@ -41,11 +47,5 @@ class TypesAdapter : RecyclerView.Adapter<TypesAdapter.Holder>() {
 
     inner class Holder(private val binding: ItemTypesBinding) : RecyclerView.ViewHolder(binding.root) {
         val textType: TextView = binding.textType
-    }
-
-    // Helper function to check if the system is in dark mode
-    private fun isSystemInDarkMode(context: Context): Boolean {
-        val nightModeFlags = context.resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
-        return nightModeFlags == Configuration.UI_MODE_NIGHT_YES
     }
 }

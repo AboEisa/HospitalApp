@@ -57,6 +57,9 @@ interface ApiServices {
         @Field("user_id") userId: Int
     ): UserModel
 
+    @GET("calls")
+    suspend fun getAllCalls(@Query("date") date: String): ModelAllCalls
+
 
     @FormUrlEncoded
     @POST("calls")
@@ -67,9 +70,6 @@ interface ApiServices {
         @Field("phone") phone: String,
         @Field("description") description: String
     ):Creation
-
-    @GET("calls")
-    suspend fun getAllCalls(@Query("date") date: String): ModelAllCalls
 
     @GET("calls/{id}")
     suspend fun showCall(@Path("id") id: Int): ShowCall

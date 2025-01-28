@@ -83,6 +83,8 @@ class ProfileFragment : Fragment() {
     }
 
    private fun observer(){
+       val id = ProfileFragmentArgs.fromBundle(requireArguments()).id
+       profileViewModel.getProfile(id)
         profileViewModel.profileLiveData.observe(viewLifecycleOwner){response->
             response?.let {
                 val data = it.data

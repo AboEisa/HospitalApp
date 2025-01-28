@@ -19,6 +19,7 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -59,6 +60,7 @@ class CallsFragment : Fragment() {
         observer()
         passData()
         onClicks()
+        onUserClick()
     }
 
     private fun passData(){
@@ -98,9 +100,7 @@ class CallsFragment : Fragment() {
                 } else {
                     adapterCalls.list = arrayListOf()
                     binding.recyclerCalls.visibility = View.GONE
-
                 }
-
             }
         }
     }
@@ -147,7 +147,6 @@ class CallsFragment : Fragment() {
                     count: Int,
                     after: Int
                 ) {
-
                 }
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -164,6 +163,15 @@ class CallsFragment : Fragment() {
                 }
 
             })
+
+        }
+    }
+
+    fun onUserClick() {
+        adapterCalls.onUserClick = object : CallsAdapter.OnUserClick {
+            override fun onClick(id: Int) {
+               findNavController().navigate(CallsFragmentDirections.actionCallsFragmentToCaseDetailsFragment())
+            }
 
         }
     }

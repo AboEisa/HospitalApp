@@ -8,6 +8,7 @@ import com.example.hospitalapp.ApiServices
 import com.example.hospitalapp.SingleLiveEvent
 import com.example.hospitalapp.models.Creation
 import com.example.hospitalapp.models.ModelAllCalls
+import com.example.hospitalapp.models.ShowCall
 import com.vitatrack.hospitalsystem.models.ModelAllUser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -54,6 +55,27 @@ class ReceptionistViewModel@Inject constructor(private val apiServices: ApiServi
                 }
             }catch (e:Exception){
                 _createCallLiveData.postValue(null)
+            }
+        }
+    }
+
+
+    private val _showCallLiveData = MutableLiveData<ShowCall?>()
+    val showCallLiveData get() = _showCallLiveData
+
+    fun showCall(id: Int){
+        viewModelScope.launch(Dispatchers.IO) {
+            val response = apiServices.showCall(id)
+            try {
+                if (response.status == 1){
+                  with(Dispatchers.Main){
+                      _showCallLiveData.postValue(response)
+                  }
+                }else{
+                    _showCallLiveData.postValue(null)
+                }
+            }catch (e:Exception){
+                _showCallLiveData.postValue(null)
             }
         }
     }

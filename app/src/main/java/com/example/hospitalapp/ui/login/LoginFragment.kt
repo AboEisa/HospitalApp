@@ -107,6 +107,7 @@ class LoginFragment : Fragment() {
             if (data != null && data.status == 1) {
                 val responseData = data.data
                 responseData.let {
+                    Constants.BEARER_TOKEN = it.access_token
                     navigateUserToHome(
                         it.type
                         , it.first_name

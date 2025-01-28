@@ -44,7 +44,7 @@ class ReceptionistViewModel@Inject constructor(private val apiServices: ApiServi
 
     fun createCall(patientName: String, age: String, doctorId: Int, phone: String, description: String){
         viewModelScope.launch(Dispatchers.IO) {
-            val response = apiServices.createCall( patientName,  age,  doctorId,  phone,  description)
+            val response = apiServices.createCallReceptionist( patientName,  age,  doctorId,  phone,  description)
             try {
                 if (response.status == 1){
                     _createCallLiveData.postValue(response)

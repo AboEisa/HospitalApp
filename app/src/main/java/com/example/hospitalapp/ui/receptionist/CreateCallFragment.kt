@@ -49,7 +49,6 @@ class CreateCallFragment : Fragment() {
             }
         passData()
         onClicks()
-
     }
 
 
@@ -123,13 +122,8 @@ class CreateCallFragment : Fragment() {
                     val phoneNumber = textPhoneNumber.text.toString().trim()
                     val description = caseDescription.text.toString().trim()
                     val selectedDoctorId = findNavController().currentBackStackEntry?.savedStateHandle?.get<Int>("selectedDoctorId")
-
                     if (selectedDoctorId != null) {
                         createCall(patientName, age, phoneNumber, selectedDoctorId, description)
-                        textPatientName.text?.clear()
-                        textAge.text?.clear()
-                        textPhoneNumber.text?.clear()
-                        caseDescription.text?.clear()
                         findNavController().navigate(CreateCallFragmentDirections.actionCreateCallFragmentToBackToHomeFragment(
                             id = userId,
                             fullName = fullName,

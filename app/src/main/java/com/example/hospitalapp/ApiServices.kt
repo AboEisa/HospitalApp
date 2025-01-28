@@ -60,7 +60,7 @@ interface ApiServices {
 
     @FormUrlEncoded
     @POST("calls")
-    suspend fun createCall(
+    suspend fun createCallReceptionist(
         @Field("patient_name") name: String,
         @Field("age") age: String,
         @Field("doctor_id") doctorId: Int,

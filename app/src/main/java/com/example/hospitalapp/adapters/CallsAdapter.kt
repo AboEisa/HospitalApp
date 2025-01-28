@@ -48,6 +48,14 @@ class CallsAdapter: RecyclerView.Adapter<CallsAdapter.Holder>() {
         val textName = binding.textName
         val textDate = binding.textDate
         val imageCondition = binding.icCondation
+        init {
+            itemView.setOnClickListener {
+                val id = list?.get(layoutPosition)?.id
+                id?.let {
+                    onUserClick?.onClick(id)
+                }
+            }
+        }
 
 
     }

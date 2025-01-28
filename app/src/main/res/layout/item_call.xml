@@ -64,6 +64,8 @@
         tools:text="Omar Abdulrahman" />
 
 
+
+
     <ImageView
         android:id="@+id/ic_condation"
         android:layout_width="wrap_content"

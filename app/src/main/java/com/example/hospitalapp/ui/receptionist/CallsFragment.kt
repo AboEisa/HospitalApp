@@ -170,7 +170,9 @@ class CallsFragment : Fragment() {
     fun onUserClick() {
         adapterCalls.onUserClick = object : CallsAdapter.OnUserClick {
             override fun onClick(id: Int) {
-               findNavController().navigate(CallsFragmentDirections.actionCallsFragmentToCaseDetailsFragment())
+               findNavController().navigate(CallsFragmentDirections.actionCallsFragmentToCaseDetailsFragment(
+                   id = id
+               ))
             }
 
         }

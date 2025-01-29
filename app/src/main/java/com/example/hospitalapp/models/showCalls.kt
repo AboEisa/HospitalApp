@@ -1,7 +1,7 @@
 package com.example.hospitalapp.models
 
 data class ShowCall(
-    val `data`: Data,
+    val `data`: CallData,
     val message: String,
     val status: Int
 )

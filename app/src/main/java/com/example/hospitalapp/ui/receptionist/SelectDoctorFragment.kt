@@ -126,7 +126,7 @@ class SelectDoctorFragment : Fragment() {
         receptionistViewModel.selectDoctorLiveData.observe(viewLifecycleOwner) { response ->
             response?.let {
                 val data = it.data
-                if (!data.isNullOrEmpty()) {
+                if (data != null) {
                     adapterDoctor.list = data as ArrayList<DataAll>?
                     binding.selectDoctor.visibility = View.VISIBLE
                     binding.noResultsPlaceholder.visibility = View.GONE

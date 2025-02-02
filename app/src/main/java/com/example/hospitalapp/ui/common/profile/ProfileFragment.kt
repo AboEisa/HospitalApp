@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
@@ -12,6 +13,7 @@ import com.example.hospitalapp.databinding.FragmentProfileBinding
 import com.example.hospitalapp.models.Data
 import com.example.hospitalapp.models.UserModel
 import com.example.hospitalapp.ui.hr.HrViewModel
+import com.example.hospitalapp.ui.receptionist.ReceptionistViewModel
 import com.vitatrack.hospitalsystem.models.ModelAllUser
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -30,6 +32,7 @@ class ProfileFragment : Fragment() {
     private lateinit var phone: String
     private var userId: Int = 0
     private val profileViewModel: ProfileViewModel by viewModels()
+    private val receptionistViewModel: ReceptionistViewModel by viewModels()
 
 
 
@@ -54,9 +57,25 @@ class ProfileFragment : Fragment() {
     private fun onClicks(){
 
         binding.apply {
-            binding.btnBack.setOnClickListener {
+            btnBack.setOnClickListener {
                 findNavController().popBackStack()
             }
+//            btnLogout.setOnClickListener {
+//                val id = ProfileFragmentArgs.fromBundle(requireArguments()).id ?: 0
+//                receptionistViewModel.logoutCall(id)
+//
+//                // Navigate to LoginFragment and clear the back stack
+//                val action = ProfileFragmentDirections.actionProfileFragmentToLoginFragment(id)
+//                findNavController().navigate(action) {
+//                    popUpTo(R.id.splashFragment) { inclusive = true }
+//                }
+//
+//                // Show Toast message
+//                Toast.makeText(requireContext(), "Logout Successfully", Toast.LENGTH_SHORT).show()
+//            }
+
+
+
         }
     }
 
@@ -99,9 +118,6 @@ class ProfileFragment : Fragment() {
                     email.text = data.email
                     phone.text = data.mobile
                 }
-
-
-
             }
         }
     }

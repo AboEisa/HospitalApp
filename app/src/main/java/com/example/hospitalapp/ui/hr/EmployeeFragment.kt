@@ -166,19 +166,25 @@ class EmployeeFragment : Fragment() {
             response?.let {
                 val data = it.data
                 if (!data.isNullOrEmpty()) {
+                    // Display employee data in RecyclerView
                     adapterEmployee.list = ArrayList(data)
                     binding.recyclerEmployee.visibility = View.VISIBLE
                     binding.recyclerEmployee.adapter = adapterEmployee
                     adapterEmployee.notifyDataSetChanged()
                     binding.noResultsPlaceholder.visibility = View.GONE
+                    binding.progressView.visibility = View.GONE
+                    binding.progressView.stopIndeterminateAnimation()
                 } else {
                     adapterEmployee.list = arrayListOf()
                     binding.recyclerEmployee.visibility = View.GONE
                     binding.noResultsPlaceholder.visibility = View.VISIBLE
+                    binding.progressView.visibility = View.VISIBLE
+                    binding.progressView.startIndeterminateAnimation()
                 }
             }
         }
     }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

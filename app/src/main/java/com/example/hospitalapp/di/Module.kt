@@ -55,7 +55,7 @@ object Module {
     fun  getRetrofit(okHttp:OkHttpClient): Retrofit {
         return Retrofit.Builder()
             .client(okHttp)
-            .baseUrl("https://hospital.elhossiny.net/api/v1/")
+            .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
     }

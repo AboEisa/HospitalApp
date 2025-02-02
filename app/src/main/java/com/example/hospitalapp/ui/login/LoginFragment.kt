@@ -74,6 +74,10 @@ class LoginFragment : Fragment() {
                 binding.textEmail.error = getString(R.string.e_mail)
             }
             else -> {
+                // Show loading indicator with animation
+                binding.progressView.visibility = View.VISIBLE
+                binding.progressView.startIndeterminateAnimation()  // Start animation
+
                 lifecycleScope.launch {
                     try {
                         val response = apiServices.login(email, password, Constants.BEARER_TOKEN)
@@ -88,11 +92,16 @@ class LoginFragment : Fragment() {
                         }
                     } catch (e: Exception) {
                         Toast.makeText(requireContext(), getString(R.string.api_error), Toast.LENGTH_SHORT).show()
+                    } finally {
+                        // Hide loading indicator and stop animation after network request is complete
+                        binding.progressView.visibility = View.GONE
+                        binding.progressView.stopIndeterminateAnimation()  // Stop animation
                     }
                 }
             }
         }
     }
+
 
 
     private fun fetchDataOfUser(email: String, password: String){
@@ -219,6 +228,8 @@ class LoginFragment : Fragment() {
             }
         }
         findNavController().navigate(action)
+
+
     }
 
 

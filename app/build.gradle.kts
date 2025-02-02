@@ -2,7 +2,7 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
     id("com.google.dagger.hilt.android")
-    id("androidx.navigation.safeargs.kotlin")
+    id ("androidx.navigation.safeargs.kotlin")
     id("com.google.devtools.ksp") // Add KSP plugin
 }
 
@@ -106,6 +106,9 @@ dependencies {
 
 
     implementation ("com.github.bumptech.glide:glide:4.16.0")
+
+    implementation("com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:0.9.2")
+
 
 
 

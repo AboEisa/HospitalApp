@@ -5,7 +5,7 @@ class Constants {
 
     companion object{
         const val BASE_URL = "https://hospital.elhossiny.net/api/v1/"
-         var BEARER_TOKEN = ""
+        var BEARER_TOKEN = ""
         const val DOCTOR = "doctor"
         const val NURSE = "nurse"
         const val HR = "hr"

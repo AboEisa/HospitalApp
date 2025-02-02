@@ -12,6 +12,10 @@
     <color name="red">#B71C1C</color>
     <color name="blue">#5F9EDC</color>
 
+    <declare-styleable name="CustomProgressView">
+        <attr name="progressColor" format="color" />
+        <attr name="backgroundColor" format="color" />
+    </declare-styleable>
 
 </resources>
 

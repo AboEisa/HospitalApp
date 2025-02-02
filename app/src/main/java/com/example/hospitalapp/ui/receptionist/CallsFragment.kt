@@ -97,9 +97,13 @@ class CallsFragment : Fragment() {
                     binding.recyclerCalls.visibility = View.VISIBLE
                     binding.recyclerCalls.adapter = adapterCalls
                     adapterCalls.notifyDataSetChanged()
+                    binding.noResultsPlaceholder.visibility = View.GONE
+                    binding.progressView.stopIndeterminateAnimation()
                 } else {
                     adapterCalls.list = arrayListOf()
                     binding.recyclerCalls.visibility = View.GONE
+                    binding.noResultsPlaceholder.visibility = View.VISIBLE
+                    binding.progressView.stopIndeterminateAnimation()
                 }
             }
         }
@@ -167,7 +171,7 @@ class CallsFragment : Fragment() {
         }
     }
 
-    fun onUserClick() {
+   private fun onUserClick() {
         adapterCalls.onUserClick = object : CallsAdapter.OnUserClick {
             override fun onClick(id: Int) {
                findNavController().navigate(CallsFragmentDirections.actionCallsFragmentToCaseDetailsFragment(

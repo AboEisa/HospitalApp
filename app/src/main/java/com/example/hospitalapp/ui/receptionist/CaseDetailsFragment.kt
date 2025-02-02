@@ -19,14 +19,6 @@ class CaseDetailsFragment : Fragment() {
     private var _binding : FragmentCaseDetailsBinding? = null
     private val binding get() = _binding!!
     private val viewModel: ReceptionistViewModel by viewModels()
-    private var id: Int = 0
-
-
-
-
-    private var status: String? = null
-
-
 
 
     override fun onCreateView(
@@ -56,15 +48,15 @@ class CaseDetailsFragment : Fragment() {
    private fun observe(){
         viewModel.showCallLiveData.observe(viewLifecycleOwner){ response ->
             response?.let {
-                val response = response?.data
+                val response = response.data
                 if (response != null){
-                   binding.PatientInfo.text = response.patient_name
+                    binding.PatientInfo.text = response.patient_name
                     binding.AgeInfo.text = "${response.age} Years"
                     binding.PhoneNumberInfo.text = response.phone
                     binding.dateInfo.text = response.created_at
                     binding.textDescription.text = response.description
                 }
-                if (response?.status =="logout"){
+                if (response.status =="logout"){
                     binding.statusImageInfo.setImageResource(R.drawable.done)
                     binding.statusInfo.text = "Finished"
                     binding.btnLogout.visibility = View.GONE
@@ -73,8 +65,6 @@ class CaseDetailsFragment : Fragment() {
                     binding.statusInfo.text = "Process"
                     binding.btnLogout.visibility = View.VISIBLE
                 }
-
-
 
             }
             }
@@ -91,8 +81,6 @@ class CaseDetailsFragment : Fragment() {
             findNavController().popBackStack()
         }
     }
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

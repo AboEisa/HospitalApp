@@ -98,12 +98,10 @@ class CallsFragment : Fragment() {
                     binding.recyclerCalls.adapter = adapterCalls
                     adapterCalls.notifyDataSetChanged()
                     binding.noResultsPlaceholder.visibility = View.GONE
-                    binding.progressView.stopIndeterminateAnimation()
                 } else {
                     adapterCalls.list = arrayListOf()
                     binding.recyclerCalls.visibility = View.GONE
                     binding.noResultsPlaceholder.visibility = View.VISIBLE
-                    binding.progressView.stopIndeterminateAnimation()
                 }
             }
         }

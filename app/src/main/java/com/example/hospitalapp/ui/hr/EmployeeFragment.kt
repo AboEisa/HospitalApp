@@ -23,7 +23,6 @@ import com.example.hospitalapp.utils.Constants.Companion.RECEPTIONIST
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -65,8 +64,6 @@ class EmployeeFragment : Fragment() {
         passData()
         onClicks()
     }
-
-
     override fun onResume() {
         super.onResume()
         type = "All"
@@ -103,62 +100,63 @@ class EmployeeFragment : Fragment() {
                 findNavController().navigate(EmployeeFragmentDirections.actionEmployeeFragmentToNewUserFragment())
             }
             binding.textSearch.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-                }
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
 
                 override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
                     searchJob?.cancel()
                     searchJob = lifecycleScope.launch {
                         delay(200)
                         fullName = s.toString().trim()
+                        // Show progressView when searching
+                        binding.progressView.visibility = View.VISIBLE
+                        binding.progressView.startIndeterminateAnimation()
                         fetchEmployees(type, fullName)
                     }
                 }
 
-                override fun afterTextChanged(s: Editable?) {
-
-                }
+                override fun afterTextChanged(s: Editable?) {}
             })
         }
-        }
-
-   private fun onUserClick(){
-
-       adapterEmployee.onUserClick = object : EmployeeAdapter.OnUserClick{
-           override fun onClick(id: Int) {
-               findNavController().navigate(EmployeeFragmentDirections.actionEmployeeFragmentToProfileFragment(
-                   id,
-                   fullName,
-                   type,
-                   specialist,
-                   gender,
-                   birthday,
-                   address,
-                   status,
-                   email,
-                   phone
-               ))
-           }
-
-       }
     }
 
+    private fun onUserClick() {
+        adapterEmployee.onUserClick = object : EmployeeAdapter.OnUserClick {
+            override fun onClick(id: Int) {
+                findNavController().navigate(
+                    EmployeeFragmentDirections.actionEmployeeFragmentToProfileFragment(
+                        id,
+                        fullName,
+                        type,
+                        specialist,
+                        gender,
+                        birthday,
+                        address,
+                        status,
+                        email,
+                        phone
+                    )
+                )
+            }
+        }
+    }
 
     private fun setupTypeAdapter() {
         adapterTypes.list = typesList
         binding.recyclerTypes.adapter = adapterTypes
         adapterTypes.notifyDataSetChanged()
         adapterTypes.onTypeClick = { type ->
+            // Show progressView when a type is clicked
+            binding.progressView.visibility = View.VISIBLE
+            binding.progressView.startIndeterminateAnimation()
             this.type = type
             fetchEmployees(type, fullName)
         }
     }
 
     private fun fetchEmployees(type: String, fullName: String) {
-       lifecycleScope.launch(Dispatchers.IO) {
-           hrViewModel.getEmployee(type, fullName)
-       }
+        lifecycleScope.launch(Dispatchers.IO) {
+            hrViewModel.getEmployee(type, fullName)
+        }
     }
 
     private fun observer() {
@@ -166,21 +164,18 @@ class EmployeeFragment : Fragment() {
             response?.let {
                 val data = it.data
                 if (!data.isNullOrEmpty()) {
-                    // Display employee data in RecyclerView
                     adapterEmployee.list = ArrayList(data)
                     binding.recyclerEmployee.visibility = View.VISIBLE
                     binding.recyclerEmployee.adapter = adapterEmployee
                     adapterEmployee.notifyDataSetChanged()
                     binding.noResultsPlaceholder.visibility = View.GONE
-                    binding.progressView.visibility = View.GONE
-                    binding.progressView.stopIndeterminateAnimation()
                 } else {
                     adapterEmployee.list = arrayListOf()
                     binding.recyclerEmployee.visibility = View.GONE
                     binding.noResultsPlaceholder.visibility = View.VISIBLE
-                    binding.progressView.visibility = View.VISIBLE
-                    binding.progressView.startIndeterminateAnimation()
                 }
+                binding.progressView.visibility = View.GONE
+                binding.progressView.stopIndeterminateAnimation()
             }
         }
     }

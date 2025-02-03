@@ -34,21 +34,38 @@ class SplashFragment : Fragment() {
         splashProgress()
     }
 
-   private fun splashProgress(){
-
+    private fun splashProgress() {
         progressView.apply {
             visibility = View.VISIBLE
             setProgress(0f)
         }
-        Handler(Looper.getMainLooper()).apply {
-            postDelayed({ progressView.setProgress(50f) }, 500)
-            postDelayed({ progressView.setProgress(80f) }, 1000)
-            postDelayed({
-                progressView.setProgress(100f)
-                findNavController().navigate(
-                    SplashFragmentDirections.actionSplashFragmentToLoginFragment(id = userId)
-                )
-            }, 2000)
+        val totalDuration = 2000L // Total duration in milliseconds
+        val stepDuration = 100L   // Duration between each progress update
+        val totalSteps = totalDuration / stepDuration // Total steps to reach 100%
+        val progressIncrement = 100f / totalSteps // Progress increment per step
+        var currentStep = 0
+        val handler = Handler(Looper.getMainLooper())
+        val runnable = object : Runnable {
+            override fun run() {
+                if (currentStep <= totalSteps) {
+                    val progress = currentStep * progressIncrement
+                    progressView.setProgress(progress)
+                    currentStep++
+                    handler.postDelayed(this, stepDuration)
+                } else {
+                    // Progress complete, navigate to the next screen
+                    findNavController().navigate(
+                        SplashFragmentDirections.actionSplashFragmentToLoginFragment(id = userId)
+                    )
+                }
+            }
         }
+
+        handler.post(runnable) // Start the progress updates
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }

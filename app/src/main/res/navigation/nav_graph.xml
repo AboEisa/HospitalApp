@@ -437,6 +437,21 @@
             app:popEnterAnim="@anim/animation3"
             app:popExitAnim="@anim/animation4" />
     </fragment>
+    <fragment
+        android:id="@+id/callsFragment2"
+        android:name="com.example.hospitalapp.CallsFragment"
+        android:label="fragment_doctor_calls"
+        tools:layout="@layout/fragment_doctor_calls" />
+    <fragment
+        android:id="@+id/casesFragment"
+        android:name="com.example.hospitalapp.CasesFragment"
+        android:label="fragment_doctor_cases"
+        tools:layout="@layout/fragment_doctor_cases" />
+    <fragment
+        android:id="@+id/doctorFragment"
+        android:name="com.example.hospitalapp.DoctorFragment"
+        android:label="fragment_doctor"
+        tools:layout="@layout/fragment_doctor" />
 
 
 </navigation>

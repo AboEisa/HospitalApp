@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    android:layout_height="@dimen/_125sdp"
+    android:layout_margin="@dimen/_10sdp"
+    app:cardElevation="@dimen/_4sdp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
@@ -12,9 +15,10 @@
 
         <ImageView
             android:id="@+id/user"
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
+            android:src="@drawable/person"
             android:padding="@dimen/_3sdp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
@@ -35,7 +39,14 @@
 
         <ImageView
             android:id="@+id/date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="@+id/user"
+            app:layout_constraintStart_toStartOf="@+id/user"
+            android:src="@drawable/ic_date"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            />
 
 
         <TextView
@@ -48,7 +59,7 @@
             android:layout_marginStart="@dimen/_10sdp"
             app:layout_constraintStart_toEndOf="@+id/date"
             app:layout_constraintTop_toTopOf="@+id/date"
-            tools:text="24 . 04 . 2021" />
+            tools:text="24.04.2021" />
 
 
         <com.google.android.material.button.MaterialButton
@@ -61,6 +72,7 @@
             android:layout_marginStart="@dimen/_25sdp"
             android:text="Accept"
             app:cornerRadius="@dimen/_5sdp"
+            android:backgroundTint="@color/green"
 
             />
 
@@ -69,8 +81,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_25sdp"
-            android:text="Accept"
+            android:text="Busy"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_accept"
+            app:cornerRadius="@dimen/_4sdp"
+            android:backgroundTint="@color/orange"
+            />
 
 
 

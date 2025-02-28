@@ -92,11 +92,10 @@ class SelectDoctorFragment : Fragment() {
         })
 
         binding.btnSelectDoctor.setOnClickListener {
-            // Retrieve the doctor ID and name from savedStateHandle
+            // Retrieve the doctor ID and name
             val selectedDoctorName = findNavController().previousBackStackEntry?.savedStateHandle?.get<String>("selectedDoctorName")
             val selectedDoctorId = findNavController().previousBackStackEntry?.savedStateHandle?.get<Int>("selectedDoctorId")
 
-            // If a doctor is selected, pass the information back and navigate
             if (selectedDoctorId != null && selectedDoctorName != null) {
                 // You can pass these values back to the previous fragment if needed
                 findNavController().previousBackStackEntry?.savedStateHandle?.set(
@@ -106,7 +105,6 @@ class SelectDoctorFragment : Fragment() {
                     "selectedDoctorName", selectedDoctorName
                 )
 
-                // Navigate back to the previous fragment
                 findNavController().popBackStack()
             } else {
                 Toast.makeText(context, "Please select a doctor", Toast.LENGTH_SHORT).show()

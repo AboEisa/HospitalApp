@@ -30,8 +30,7 @@ class ReceptionistFragment : Fragment() {
     private lateinit var email: String
     private lateinit var phone: String
     private var userId: Int = 0
-    val receptionistViewModel: ReceptionistViewModel by viewModels()
-    private val adapterCalls: CallsAdapter by lazy { CallsAdapter() }
+
 
 
 
@@ -85,7 +84,6 @@ class ReceptionistFragment : Fragment() {
                 phone = phone
             ))
         }
-        binding
         binding.cardProfile.setOnClickListener {
             findNavController().navigate(ReceptionistFragmentDirections.actionReceptionistFragmentToProfileFragment(
                 id = userId,
@@ -102,10 +100,6 @@ class ReceptionistFragment : Fragment() {
 
         }
         }
-
-
-
-
 
     override fun onDestroyView() {
         super.onDestroyView()

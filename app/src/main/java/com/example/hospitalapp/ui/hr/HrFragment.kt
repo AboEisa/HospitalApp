@@ -26,7 +26,6 @@ class HrFragment : Fragment() {
     private lateinit var email: String
     private lateinit var phone: String
     private var userId: Int = 0
-    val hrvViewModel: HrViewModel by viewModels()
 
 
     override fun onCreateView(

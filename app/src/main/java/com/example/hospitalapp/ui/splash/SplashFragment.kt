@@ -12,7 +12,6 @@ import com.example.hospitalapp.R
 import com.example.hospitalapp.databinding.FragmentSplashBinding
 import com.example.hospitalapp.utils.CustomProgressBar
 
-
 class SplashFragment : Fragment() {
     private var _binding: FragmentSplashBinding? = null
     private val binding get() = _binding!!
@@ -54,9 +53,11 @@ class SplashFragment : Fragment() {
                     handler.postDelayed(this, stepDuration)
                 } else {
                     // Progress complete, navigate to the next screen
-                    findNavController().navigate(
-                        SplashFragmentDirections.actionSplashFragmentToLoginFragment(id = userId)
-                    )
+                    if (isAdded) { // Check if the fragment is still attached
+                        findNavController().navigate(
+                            SplashFragmentDirections.actionSplashFragmentToLoginFragment(id = userId)
+                        )
+                    }
                 }
             }
         }

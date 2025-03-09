@@ -102,6 +102,7 @@ class CallsFragment : Fragment() {
                     adapterCalls.list = arrayListOf()
                     binding.recyclerCalls.visibility = View.GONE
                     binding.noResultsPlaceholder.visibility = View.VISIBLE
+
                 }
             }
         }

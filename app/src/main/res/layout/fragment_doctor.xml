@@ -4,7 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".DoctorFragment">
+    tools:context=".ui.doctor.DoctorFragment"
+    android:layout_marginTop="@dimen/_20sdp"
+
+    >
 
 
     <androidx.cardview.widget.CardView
@@ -50,7 +53,7 @@
 
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardEmployee"
+        android:id="@+id/cardCalls"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="@dimen/_10sdp"
@@ -73,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_45sdp"
-            android:text="Employee"
+            android:text="Calls"
             android:textSize="@dimen/_12sdp"
             android:textColor="#FFFFFF" />
 
@@ -90,7 +93,7 @@
         app:cardCornerRadius="@dimen/_10sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.23"
-        app:layout_constraintStart_toEndOf="@+id/cardEmployee"
+        app:layout_constraintStart_toEndOf="@+id/cardCalls"
         app:layout_constraintTop_toBottomOf="@+id/card_profile"
         app:layout_constraintWidth_percent="0.44">
 
@@ -124,7 +127,7 @@
         app:cardCornerRadius="@dimen/_10sdp"
         app:layout_constraintHeight_percent="0.23"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cardEmployee"
+        app:layout_constraintTop_toBottomOf="@id/cardCalls"
         app:layout_constraintWidth_percent="0.44">
 
         <ImageView

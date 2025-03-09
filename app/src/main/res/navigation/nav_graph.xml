@@ -50,7 +50,11 @@
             app:popExitAnim="@anim/animation4" />
         <action
             android:id="@+id/action_loginFragment_to_doctorFragment"
-            app:destination="@id/doctorFragment" />
+            app:destination="@id/doctorFragment"
+            app:enterAnim="@anim/animation"
+            app:exitAnim="@anim/animation2"
+            app:popEnterAnim="@anim/animation3"
+            app:popExitAnim="@anim/animation4" />
     </fragment>
     <fragment
         android:id="@+id/hrFragment"
@@ -442,9 +446,40 @@
     </fragment>
     <fragment
         android:id="@+id/callsFragment2"
-        android:name="com.example.hospitalapp.CallsFragment"
+        android:name="com.example.hospitalapp.ui.doctor.CallsFragment"
         android:label="fragment_doctor_calls"
         tools:layout="@layout/fragment_doctor_calls" >
+        <argument
+            android:name="id"
+            app:argType="integer" />
+
+        <argument
+            android:name="fullName"
+            app:argType="string" />
+        <argument
+            android:name="type"
+            app:argType="string" />
+        <argument
+            android:name="specialist"
+            app:argType="string" />
+        <argument
+            android:name="gender"
+            app:argType="string" />
+        <argument
+            android:name="birthday"
+            app:argType="string" />
+        <argument
+            android:name="address"
+            app:argType="string" />
+        <argument
+            android:name="status"
+            app:argType="string" />
+        <argument
+            android:name="email"
+            app:argType="string" />
+        <argument
+            android:name="phone"
+            app:argType="string" />
 
     </fragment>
     <fragment
@@ -456,7 +491,7 @@
     </fragment>
     <fragment
         android:id="@+id/doctorFragment"
-        android:name="com.example.hospitalapp.DoctorFragment"
+        android:name="com.example.hospitalapp.ui.doctor.DoctorFragment"
         android:label="fragment_doctor"
         tools:layout="@layout/fragment_doctor">
         <argument
@@ -490,6 +525,33 @@
         <argument
             android:name="phone"
             app:argType="string" />
+        <action
+            android:id="@+id/action_doctorFragment_to_profileFragment"
+            app:destination="@id/profileFragment"
+            app:enterAnim="@anim/animation"
+            app:exitAnim="@anim/animation2"
+            app:popEnterAnim="@anim/animation3"
+            app:popExitAnim="@anim/animation4" />
+        <action
+            android:id="@+id/action_doctorFragment_to_employeeFragment"
+            app:destination="@id/employeeFragment"
+            app:enterAnim="@anim/animation"
+            app:exitAnim="@anim/animation2"
+            app:popEnterAnim="@anim/animation3"
+            app:popExitAnim="@anim/animation4" />
+        <action
+            android:id="@+id/action_doctorFragment_to_casesFragment"
+            app:destination="@id/casesFragment" />
+        <action
+            android:id="@+id/action_doctorFragment_to_callsFragment2"
+            app:destination="@id/callsFragment2"
+            app:enterAnim="@anim/animation"
+            app:exitAnim="@anim/animation2"
+            app:popEnterAnim="@anim/animation3"
+            app:popExitAnim="@anim/animation4" />
+        <action
+            android:id="@+id/action_doctorFragment_to_callsFragment3"
+            app:destination="@id/callsFragment" />
 
     </fragment>
 

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".CallsFragment">
+    tools:context="ui.doctor.CallsFragment">
 
     <TextView
         android:id="@+id/textView1"
@@ -29,6 +29,7 @@
         app:tint="?attr/colorOnSurface" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerCalls"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

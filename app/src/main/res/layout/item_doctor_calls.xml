@@ -69,7 +69,7 @@
             app:layout_constraintTop_toBottomOf="@id/date"
             app:layout_constraintStart_toEndOf="@id/date"
             android:layout_marginTop="@dimen/_25sdp"
-            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_35sdp"
             android:text="Accept"
             app:cornerRadius="@dimen/_5sdp"
             android:backgroundTint="@color/green"
@@ -80,7 +80,7 @@
         <com.google.android.material.button.MaterialButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_25sdp"
+            android:layout_marginStart="@dimen/_45sdp"
             android:text="Busy"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/btn_accept"
